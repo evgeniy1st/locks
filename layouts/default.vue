@@ -1,6 +1,5 @@
 <template>
-  <div>
-    A *default* layout
+  <div class="font-roboto">
     <slot />
   </div>
 </template>

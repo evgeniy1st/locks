@@ -1,10 +1,6 @@
 <template>
-  <div class="w-full relative">
-    <h1
-      class="absolute top-[30px] opacity-60 p-2 border text-purple-600 flex justify-center items-center"
-    >
-      {{ block.collection }}
-    </h1>
+  <div class="border rounded-md p-4 max-w-1/3 max-h-[350px] overflow-auto">
+    <h1>{{ block.collection }}</h1>
     <component :is="component.component" v-once :block="component.data" />
   </div>
 </template>

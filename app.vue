@@ -8,7 +8,7 @@
 const runtimeConfig = useRuntimeConfig();
 
 const { data: data } = await useFetch(
-  `${runtimeConfig.public.api}items/sites/${runtimeConfig.public.site}?fields=*.*`
+  `${runtimeConfig.public.api}items/sites/${runtimeConfig.public.site}?fields=*`
 );
 </script>
 

@@ -17,6 +17,7 @@ export default {
       colors: {
         white: '#fff',
         black: '#000',
+        'basic-black': '#141414',
       },
       fontFamily: {
         roboto: ['Roboto', 'sans-serif'],
