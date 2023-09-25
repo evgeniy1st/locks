@@ -61,23 +61,23 @@
     : false;
 
   
-    type ValidateLNKCDOZ<T> = T extends `/${infer XFPZMU}`
-    ? ValidParam<XFPZMU> extends false ? "Parameter {page} of path '//:page' is invalid" : true : false ;
+    type ValidateISTPMUQ<T> = T extends `/${infer JMKBXZ}`
+    ? ValidParam<JMKBXZ> extends false ? "Parameter {page} of path '//:page' is invalid" : true : false ;
 
     export type ValidatePath<T extends string> = T extends string 
       ? T extends '/' 
         ? T 
-         :ValidateLNKCDOZ<T> extends true ? T 
+         :ValidateISTPMUQ<T> extends true ? T 
       : string extends T
       ? T
-      : `Error: ${ValidateLNKCDOZ<T>}`
+      : `Error: ${ValidateISTPMUQ<T>}`
       : never;
   
   
     export type RouteNameFromPath<T extends string> = T extends string 
       ? T extends '/' 
         ? "index"
-         : ValidateLNKCDOZ<T> extends true ? "index-page" : never 
+         : ValidateISTPMUQ<T> extends true ? "index-page" : never 
        : never; 
   
         

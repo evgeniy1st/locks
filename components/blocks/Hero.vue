@@ -1,18 +1,13 @@
 <template>
-  <div>
-    <h1>Hero</h1>
-    <pre>
-      {{ data }}
-    </pre>
-    <div v-if="'data' in data">
-      <div class="flex gap-4 flex-wrap">
-        <ChildBlockView
-          v-for="childBlock in data.data.blocks"
-          :key="childBlock.id"
-          :block="childBlock"
-        />
-      </div>
-    </div>
+  <div
+    v-if="'data' in data"
+    class="flex py-[23px] px-[31px] gap-x-[20px] w-full mx-auto"
+  >
+    <ChildBlockView
+      v-for="childBlock in data.data.blocks"
+      :key="childBlock.id"
+      :block="childBlock"
+    />
   </div>
 </template>
 

@@ -56,6 +56,9 @@
       ],
       "@typed-router/*": [
         "./typed-router/*"
+      ],
+      "pinia": [
+        "../node_modules/pinia/dist/pinia"
       ]
     }
   },

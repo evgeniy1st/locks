@@ -1,9 +1,13 @@
 <template>
-  <div>
-    <h1>HeroExtra</h1>
-    <pre>
-      {{ data }}
-    </pre>
+  <div
+    v-if="'data' in data"
+    class="flex flex-col gap-[34px] ml-auto w-[350px] pt-[26px]"
+  >
+    <ChildBlockView
+      v-for="childBlock in data.data.blocks"
+      :key="childBlock.id"
+      :block="childBlock"
+    />
   </div>
 </template>
 

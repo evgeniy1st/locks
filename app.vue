@@ -7,8 +7,9 @@
 <script setup lang="ts">
 const runtimeConfig = useRuntimeConfig();
 
-const { data: data } = await useFetch(
-  `${runtimeConfig.public.api}items/sites/${runtimeConfig.public.site}?fields=*`
+await useFetch(
+  `${runtimeConfig.public.api}items/sites/${runtimeConfig.public.site}?fields=city.name,url,phone,email,whatsapp,telegram`,
+  { key: 'appData' }
 );
 </script>
 

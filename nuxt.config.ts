@@ -14,7 +14,13 @@ export default defineNuxtConfig({
       enabled: true,
     },
   },
-  modules: ['@nuxtjs/tailwindcss', 'nuxt-typed-router'],
+  modules: ['@nuxtjs/tailwindcss', 'nuxt-typed-router', '@pinia/nuxt'],
+  imports: {
+    dirs: ['./stores'],
+  },
+  pinia: {
+    autoImports: ['defineStore', 'acceptHMRUpdate'],
+  },
   runtimeConfig: {
     public: {
       api: 'https://api.vskrytie-zamkov78.ru/',

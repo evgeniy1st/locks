@@ -66,6 +66,9 @@
       "@typed-router/*": [
         "./typed-router/*"
       ],
+      "pinia": [
+        "../node_modules/pinia/dist/pinia"
+      ],
       "#vue-router": [
         "./vue-router"
       ],

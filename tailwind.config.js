@@ -18,6 +18,10 @@ export default {
         white: '#fff',
         black: '#000',
         'basic-black': '#141414',
+        'deep-blue': '#3C8AFF',
+        'accent-orange': '#FF7A00',
+        'light-yellow': '#FEF8DB',
+        'light-blue': '#E3F1FF',
       },
       fontFamily: {
         roboto: ['Roboto', 'sans-serif'],
