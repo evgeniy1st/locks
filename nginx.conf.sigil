@@ -17,6 +17,10 @@ server {
     return 301 https://$host:{{ $.PROXY_SSL_PORT }}$request_uri;
   }
 {{ else }}
+  location ~* \.(css|js)$ {
+      add_header Cache-Control "max-age=99999";
+      expires max;
+   }
   location    / {
 
     gzip on;
@@ -43,16 +47,6 @@ server {
     proxy_set_header X-Request-Start $msec;
     {{ if $.PROXY_X_FORWARDED_SSL }}proxy_set_header X-Forwarded-Ssl {{ $.PROXY_X_FORWARDED_SSL }};{{ end }}
   }
-
-  location ~ ^/_nuxt/.*-([^.]+)\.(js|css)$ {
-   gzip_static on;
-   gzip_min_length  1100;
-    gzip_buffers  4 32k;
-    gzip_types    text/css text/javascript text/xml text/plain text/x-component application/javascript application/x-javascript application/wasm application/json application/xml application/rss+xml font/truetype application/x-font-ttf font/opentype application/vnd.ms-fontobject image/svg+xml;
-    gzip_vary on;
-    gzip_comp_level  6;
-   expires max;
-}
 
   {{ if $.CLIENT_MAX_BODY_SIZE }}client_max_body_size {{ $.CLIENT_MAX_BODY_SIZE }};{{ end }}
 
