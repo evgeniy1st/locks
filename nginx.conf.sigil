@@ -21,6 +21,10 @@ server {
       add_header Cache-Control "max-age=9999999";
       expires max;
    }
+
+   location /_nuxt/ {
+      root {{ .DOKKU_ROOT }}/{{ .APP }}/.output/public/_nuxt
+    }
   location    / {
 
     gzip on;
@@ -90,6 +94,10 @@ server {
       add_header Cache-Control "max-age=9999999";
       expires max;
    }
+
+   location /_nuxt/ {
+      root {{ .DOKKU_ROOT }}/{{ .APP }}/.output/public/_nuxt
+    }
 
   location    / {
 

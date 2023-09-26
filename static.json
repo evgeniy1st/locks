@@ -1,7 +1,4 @@
 {
   "root": ".output/public",
-  "clean_urls": true,
-  "routes": {
-    "/_nuxt/*": ".output/public/_nuxt/"
-  }
+  "clean_urls": true
 }
