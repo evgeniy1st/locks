@@ -3,5 +3,10 @@
   "clean_urls": true,
   "routes": {
     "/_nuxt/*": "/_nuxt/"
+  },
+  "headers": {
+    "/_nuxt/*": {
+      "Cache-Control": "public, max-age=512000"
+    }
   }
 }
