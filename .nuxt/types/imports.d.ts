@@ -20,7 +20,7 @@ declare global {
   const defineNuxtPlugin: typeof import('../../node_modules/nuxt/dist/app')['defineNuxtPlugin']
   const defineNuxtRouteMiddleware: typeof import('../../node_modules/nuxt/dist/app')['defineNuxtRouteMiddleware']
   const defineOptions: typeof import('../../node_modules/vue')['defineOptions']
-  const definePageMeta: typeof import('../../node_modules/nuxt/dist/pages/runtime/composables')['definePageMeta']
+  
   const definePayloadPlugin: typeof import('../../node_modules/nuxt/dist/app')['definePayloadPlugin']
   const definePayloadReducer: typeof import('../../node_modules/nuxt/dist/app')['definePayloadReducer']
   const definePayloadReviver: typeof import('../../node_modules/nuxt/dist/app')['definePayloadReviver']
@@ -46,7 +46,7 @@ declare global {
   const loadPayload: typeof import('../../node_modules/nuxt/dist/app')['loadPayload']
   const markRaw: typeof import('../../node_modules/vue')['markRaw']
   const mergeModels: typeof import('../../node_modules/vue')['mergeModels']
-  const navigateTo: typeof import('../../node_modules/nuxt/dist/app')['navigateTo']
+  
   const nextTick: typeof import('../../node_modules/vue')['nextTick']
   const onActivated: typeof import('../../node_modules/vue')['onActivated']
   const onBeforeMount: typeof import('../../node_modules/vue')['onBeforeMount']
@@ -112,8 +112,8 @@ declare global {
   const useRequestFetch: typeof import('../../node_modules/nuxt/dist/app')['useRequestFetch']
   const useRequestHeaders: typeof import('../../node_modules/nuxt/dist/app')['useRequestHeaders']
   const useRequestURL: typeof import('../../node_modules/nuxt/dist/app')['useRequestURL']
-  const useRoute: typeof import('../../node_modules/nuxt/dist/app')['useRoute']
-  const useRouter: typeof import('../../node_modules/nuxt/dist/app')['useRouter']
+  
+  
   const useRuntimeConfig: typeof import('../../node_modules/nuxt/dist/app')['useRuntimeConfig']
   const useSeoMeta: typeof import('../../node_modules/@unhead/vue')['useSeoMeta']
   const useServerHead: typeof import('../../node_modules/@unhead/vue')['useServerHead']
