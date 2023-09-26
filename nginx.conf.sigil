@@ -18,7 +18,7 @@ server {
   }
 {{ else }}
   location ~* \.(css|js)$ {
-      add_header Cache-Control "max-age=99999";
+      add_header Cache-Control "max-age=9999999";
       expires max;
    }
   location    / {
@@ -85,6 +85,11 @@ server {
   ssl_prefer_server_ciphers off;
 
   keepalive_timeout   70;
+
+  location ~* \.(css|js)$ {
+      add_header Cache-Control "max-age=9999999";
+      expires max;
+   }
 
   location    / {
 
