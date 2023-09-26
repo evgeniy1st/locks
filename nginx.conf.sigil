@@ -17,14 +17,6 @@ server {
     return 301 https://$host:{{ $.PROXY_SSL_PORT }}$request_uri;
   }
 {{ else }}
-  location ~* \.(css|js)$ {
-      add_header Cache-Control "max-age=9999999";
-      expires max;
-   }
-
-   location /_nuxt/ {
-      root {{ .DOKKU_ROOT }}/{{ .APP }}/.output/public/_nuxt
-    }
   location    / {
 
     gzip on;
@@ -89,15 +81,6 @@ server {
   ssl_prefer_server_ciphers off;
 
   keepalive_timeout   70;
-
-  location ~* \.(css|js)$ {
-      add_header Cache-Control "max-age=9999999";
-      expires max;
-   }
-
-   location /_nuxt/ {
-      root {{ $.DOKKU_ROOT }}/{{ $.APP }}/.output/public/_nuxt
-    }
 
   location    / {
 
