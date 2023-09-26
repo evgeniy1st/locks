@@ -23,12 +23,25 @@ export default defineNuxtConfig({
       enabled: true,
     },
   },
-  modules: ['@nuxtjs/tailwindcss', 'nuxt-typed-router', '@pinia/nuxt'],
+  modules: [
+    '@nuxtjs/tailwindcss',
+    'nuxt-typed-router',
+    '@pinia/nuxt',
+    '@nuxtjs/google-fonts',
+  ],
   imports: {
     dirs: ['./stores'],
   },
   pinia: {
     autoImports: ['defineStore', 'acceptHMRUpdate'],
+  },
+  googleFonts: {
+    families: {
+      Roboto: {
+        wght: [400, 700, 900],
+        ital: [400],
+      },
+    },
   },
   runtimeConfig: {
     public: {
