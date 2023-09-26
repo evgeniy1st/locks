@@ -36,7 +36,7 @@
     <div class="flex items-center gap-[27px] w-full">
       <a
         :href="data.data.all_price_link"
-        class="flex text-accent-orange text-[26px] leading-[32px] text-left shrink-0"
+        class="flex text-accent-orange text-[26px] leading-[32px] text-left shrink-0 items-center"
       >
         <span class="max-w-[80px]">
           {{ data.data.all_price_title }}

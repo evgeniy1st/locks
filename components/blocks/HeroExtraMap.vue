@@ -4,18 +4,18 @@
       class="flex items-center justify-center w-[211px] h-[118px] rounded-[10px] relative"
     >
       <img
-        :src="`${api}assets/${data.data.map_img}`"
+        :src="`${api}assets/${data.data.map_img}?format=auto&width=211&height=118`"
         alt="mini map"
         width="211"
         height="118"
         class="absolute top-0 left-0 rounded-[10px]"
       />
       <img
-        :src="`${api}assets/${data.data.pin_img}`"
+        :src="`${api}assets/${data.data.pin_img}?format=auto&width=63&height=63`"
         alt="map pin"
         width="63"
         height="63"
-        class="relative z-10"
+        class="relative z-10 shrink-0 grow-0"
       />
     </div>
     <a

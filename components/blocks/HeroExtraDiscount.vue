@@ -12,7 +12,7 @@
         <a href="#">
           <span class="sr-only">Связаться в whatsapp</span>
           <img
-            :src="`${api}assets/${data.data.whatsapp}`"
+            :src="`${api}assets/${data.data.whatsapp}?format=auto&width=49&height=50`"
             alt="whatsapp icon"
             width="49"
             height="50"
@@ -22,7 +22,7 @@
         <a href="#">
           <span class="sr-only">Связаться в telegram</span>
           <img
-            :src="`${api}assets/${data.data.telegram}`"
+            :src="`${api}assets/${data.data.telegram}?format=auto&width=50&height=50`"
             alt="telegram icon"
             width="50"
             height="50"
@@ -32,7 +32,7 @@
         <a href="#">
           <span class="sr-only">Связаться по телефону</span>
           <img
-            :src="`${api}assets/${data.data.phone}`"
+            :src="`${api}assets/${data.data.phone}?format=auto&width=50&height=50`"
             alt="phone icon"
             width="50"
             height="50"
@@ -45,7 +45,7 @@
       class="pr-[10px] pl-[16px] py-[10px] gap-[17px] flex items-center w-full rounded-[40px] justify-start bg-light-blue"
     >
       <img
-        :src="`${api}assets/${data.data.promise}`"
+        :src="`${api}assets/${data.data.promise}?format=auto&width=31&height=47`"
         alt="icon"
         width="31"
         height="47"
