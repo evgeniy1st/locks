@@ -1,1 +1,0 @@
-export { default } from "file:///C:/Users/evgen/Desktop/dev/maksim/front/node_modules/@nuxt/vite-builder/dist/runtime/client.manifest.mjs"
