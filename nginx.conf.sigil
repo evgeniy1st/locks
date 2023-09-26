@@ -96,7 +96,7 @@ server {
    }
 
    location /_nuxt/ {
-      root {{ .DOKKU_ROOT }}/{{ .APP }}/.output/public/_nuxt
+      root {{ $.DOKKU_ROOT }}/{{ $.APP }}/.output/public/_nuxt
     }
 
   location    / {
