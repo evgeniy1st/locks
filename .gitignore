@@ -23,3 +23,4 @@ dist-ssr
 /dist
 /.output
 /.nuxt
+/.nuxt/*
