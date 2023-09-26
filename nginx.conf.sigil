@@ -20,6 +20,7 @@ server {
   location ~* \.(css|js)$ {
       add_header Cache-Control "max-age=9999999";
       expires max;
+      allow all;
    }
   location    / {
 
@@ -89,6 +90,8 @@ server {
   location ~* \.(css|js)$ {
       add_header Cache-Control "max-age=9999999";
       expires max;
+
+      allow all;
    }
 
   location    / {
