@@ -9,8 +9,9 @@
         <img
           :src="`${api}assets/${data.data.image}?width=832&height=798&format=auto&quality=80`"
           alt="Фото сотрудника"
-          class="-mt-[65px]"
-          loading="lazy"
+          class="-mt-[65px] grow-0 shrink-0"
+          width="832"
+          height="798"
         />
 
         <div class="pt-[52px] pb-[70px] flex flex-col">

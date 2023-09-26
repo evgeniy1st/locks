@@ -1,5 +1,8 @@
 <template>
   <div v-if="'data' in data">
+    <Title>{{ data.data[0].seo_title }}</Title>
+    <Meta name="description" :content="data.data[0].seo_description" />
+    <Meta name="keywords" :content="data.data[0].seo_keywords" />
     <div class="flex flex-col">
       <BlockView
         v-for="block in data.data[0].blocks"

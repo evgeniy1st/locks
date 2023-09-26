@@ -3,9 +3,13 @@
     <div class="w-full justify-between items-center flex">
       <RouterLink class="flex gap-[10px] items-center" to="/">
         <img
-          :src="api + 'assets/' + data.data.logo + '?height=29&width=29'"
-          :alt="data.data.title"
+          :src="
+            api + 'assets/' + data.data.logo + '?format=auto&height=29&width=29'
+          "
+          alt="Logo"
           class="grow-0 shrink-0"
+          width="29"
+          height="29"
         />
         <span class="text-basic-black text-[26px] grow-0 shrink-0">
           {{ data.data.title }}

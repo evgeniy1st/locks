@@ -19,13 +19,13 @@
           <span class="text-[26px]">от {{ item.services_id.min_price }}</span>
         </div>
 
-        <a
+        <!-- <a
           v-if="data.data.button_link"
           :href="data.data.button_link"
           class="rounded-[30px] py-[5px] px-[14px] bg-accent-orange text-white text-[16px] font-[700] flex items-center justify-center mr-[20px]"
         >
           {{ data.data.button_text }}
-        </a>
+        </a> -->
       </Vue3Marquee>
     </div>
   </ClientOnly>
