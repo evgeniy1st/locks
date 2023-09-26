@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-[17px] px-[30px] pb-[23px] w-full flex flex-col">
+  <header class="pt-[17px] px-[30px] pb-[23px] w-full flex flex-col">
     <div class="w-full justify-between items-center flex">
       <RouterLink class="flex gap-[10px] items-center" to="/">
         <img
@@ -52,7 +52,7 @@
         {{ appData.data.city.name }}
       </span>
     </div>
-  </div>
+  </header>
 </template>
 
 <script setup lang="ts">

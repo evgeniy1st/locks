@@ -61,23 +61,23 @@
     : false;
 
   
-    type ValidateISTPMUQ<T> = T extends `/${infer JMKBXZ}`
-    ? ValidParam<JMKBXZ> extends false ? "Parameter {page} of path '//:page' is invalid" : true : false ;
+    type ValidateIJRDVTY<T> = T extends `/${infer EOHRFP}`
+    ? ValidParam<EOHRFP> extends false ? "Parameter {page} of path '//:page' is invalid" : true : false ;
 
     export type ValidatePath<T extends string> = T extends string 
       ? T extends '/' 
         ? T 
-         :ValidateISTPMUQ<T> extends true ? T 
+         :ValidateIJRDVTY<T> extends true ? T 
       : string extends T
       ? T
-      : `Error: ${ValidateISTPMUQ<T>}`
+      : `Error: ${ValidateIJRDVTY<T>}`
       : never;
   
   
     export type RouteNameFromPath<T extends string> = T extends string 
       ? T extends '/' 
         ? "index"
-         : ValidateISTPMUQ<T> extends true ? "index-page" : never 
+         : ValidateIJRDVTY<T> extends true ? "index-page" : never 
        : never; 
   
         
