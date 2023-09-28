@@ -45,10 +45,10 @@
       class="pr-[10px] pl-[16px] py-[10px] gap-[17px] flex items-center w-full rounded-[40px] justify-start bg-light-blue"
     >
       <img
-        :src="`${api}assets/${data.data.promise}?format=auto&width=31&height=47`"
+        :src="`${api}assets/${data.data.promise}?format=auto`"
         alt="icon"
-        width="31"
-        height="47"
+        width="33"
+        height="38"
         class="shrink-0 grow-0"
       />
       <span>

@@ -11,8 +11,11 @@ export default {
   theme: {
     extend: {
       screens: {
-        xs: '360px',
-        sm: '550px',
+        sm: '406px',
+        md: '481px',
+        lg: '769px',
+        xl: '1281px',
+        '2xl': '1441px',
       },
       colors: {
         white: '#fff',

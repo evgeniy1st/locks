@@ -1,5 +1,5 @@
 <template>
-  <div class="font-roboto mx-auto max-w-[1440px]">
+  <div class="font-roboto mx-auto xl:max-w-[1440px] overflow-hidden">
     <slot />
   </div>
 </template>
