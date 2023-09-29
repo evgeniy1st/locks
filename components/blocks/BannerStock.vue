@@ -16,7 +16,9 @@
             {{ data.data.description }}
           </p>
           <div class="flex items-center gap-[22px]">
+            <label for="stockInput" class="sr-only"> Номер телефона </label>
             <input
+              id="stockInput"
               type="text"
               class="rounded-[25px] h-[50px] border border-basic-black bg-light-yellow py-1 px-4 grow"
             />
