@@ -1,0 +1,22 @@
+name: 'update-data'
+
+on: workflow_dispatch
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Wait 50s
+      run: sleep 50s
+      shell: bash
+    - name: rebuild app
+      uses: appleboy/ssh-action@master
+      with:
+        host: 176.53.161.82
+        username: dokku
+        key: ${{ secrets.DOKKU }}
+        script: ps:rebuild sandbox
