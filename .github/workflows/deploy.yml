@@ -21,6 +21,6 @@ jobs:
       - name: Push to dokku
         uses: dokku/github-action@master
         with:
-          git_remote_url: 'ssh://dokku@176.53.161.82/sandbox'
+          git_remote_url: 'ssh://dokku@176.53.161.82:22/sandbox'
           ssh_private_key: ${{ secrets.DOKKU }}
           git_push_flags: '--force'
