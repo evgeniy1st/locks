@@ -8,7 +8,7 @@
 const runtimeConfig = useRuntimeConfig();
 
 await useFetch(
-  `${runtimeConfig.public.api}items/sites/${runtimeConfig.public.site}?fields=city.name,url,phone,email,whatsapp,telegram`,
+  `${runtimeConfig.public.api}items/sites/${runtimeConfig.public.site}?fields=city.name,city.id,url,phone,email,whatsapp,telegram`,
   { key: 'appData' }
 );
 </script>

@@ -30,9 +30,6 @@
       </div>
     </div>
   </section>
-  <pre>
-    {{ data }}
-  </pre>
 </template>
 
 <script setup lang="ts">
