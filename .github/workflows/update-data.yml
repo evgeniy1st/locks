@@ -10,8 +10,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Wait 50s
-      run: sleep 50s
+    - name: Wait 20s
+      run: sleep 20s
       shell: bash
     - name: rebuild app
       uses: appleboy/ssh-action@master
