@@ -20,12 +20,12 @@
           {{ post.preview_text }}
         </p>
         <div class="w-full text-end">
-          <a
-            href="#"
+          <NuxtLink
+            :to="`/articles/${post.slug}`"
             class="px-[14px] py-[4px] rounded-[15px] text-[14px] border border-basic-black"
           >
             Читать
-          </a>
+          </NuxtLink>
         </div>
       </div>
     </li>
@@ -54,7 +54,7 @@ const props = defineProps({
 const { api, site } = runtimeConfig.public;
 
 const { data: posts }: any = useFetch(
-  `${api}items/posts?limit=${props.count}&offset=${props.offset}&sort=${
+  `${api}items/articles?limit=${props.count}&offset=${props.offset}&sort=${
     props.sort === 'newest' ? '-date_created' : 'date_created'
   }&filter[status][_eq]=published&filter[site][_eq]=${site}`
 );
