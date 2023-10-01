@@ -1,6 +1,14 @@
 name: 'update-data'
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      user:
+        required: true
+        type: string
+      message:
+        required: true
+        type: string
 
 concurrency:
   group: ${{ github.ref }}
