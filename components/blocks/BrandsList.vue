@@ -25,7 +25,10 @@
             :key="brand.block_brands_list_id"
           >
             <div class="carousel__item">
-              <img :src="`${api}assets/${brand.brands_id.logo}`" alt="" />
+              <img
+                :src="`${api}assets/${brand.brands_id.logo}`"
+                alt="Логотип бренда"
+              />
             </div>
           </Slide>
 

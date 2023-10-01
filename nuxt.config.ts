@@ -29,6 +29,8 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/google-fonts',
     'vue3-carousel-nuxt',
+    'dayjs-nuxt',
+    'nuxt-icon',
   ],
   imports: {
     dirs: ['./stores'],
