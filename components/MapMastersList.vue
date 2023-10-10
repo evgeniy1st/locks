@@ -51,7 +51,7 @@ const props = defineProps({
 
 const { api } = runtimeConfig.public;
 
-const { data: data }: any = useFetch(
+const { data: data }: any = await useFetch(
   `${api}items/masters?filter[city][_eq]=${appData.value.data.city.id}&filter[status][_eq]=active&fields=id,first_name,last_name,img,skill,districts.districts_id.name,stations.stations_id.name`
 );
 

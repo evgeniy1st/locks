@@ -45,13 +45,14 @@
     </div>
 
     <div class="flex">
-      <div v-if="'data' in data">
+      <!-- <div v-if="'data' in data">
         <ChildBlockView
           v-for="childBlock in data.data.blocks"
           :key="childBlock.id"
           :block="childBlock"
         />
-      </div>
+      </div> -->
+      <MainNavigation />
       <span class="ml-auto">
         {{ appData.data.city.name }}
       </span>
@@ -75,7 +76,7 @@ const props = defineProps({
 
 const { api } = runtimeConfig.public;
 
-const { data }: any = useFetch(
+const { data }: any = await useFetch(
   `${api}items/${props.block.collection}/${props.block.item}?fields=*.*`
 );
 

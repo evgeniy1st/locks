@@ -1,11 +1,11 @@
 <template>
-  <div v-if="isDev" class="w-full relative">
+  <!-- <div v-if="isDev" class="w-full relative">
     <div
       class="absolute top-[30px] w-full opacity-70 p-2 border border-dotted border-slate-600 text-purple-600 flex justify-center items-center z-20"
     >
       {{ block.collection }}
     </div>
-  </div>
+  </div> -->
   <component :is="component.component" v-once :block="component.data" />
 </template>
 

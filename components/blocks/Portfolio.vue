@@ -58,7 +58,7 @@ const props = defineProps({
 
 const { api } = runtimeConfig.public;
 
-const { data: data }: any = useFetch(
+const { data: data }: any = await useFetch(
   `${api}items/${props.block.collection}/${props.block.item}?fields=*,cases.block_portfolio_id,cases.objects_id.title,cases.objects_id.cost,cases.objects_id.photo`
 );
 </script>

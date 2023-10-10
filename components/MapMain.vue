@@ -225,7 +225,7 @@ const props = defineProps({
 
 const { api } = runtimeConfig.public;
 
-const { data: data }: any = useFetch(
+const { data: data }: any = await useFetch(
   `${api}items/cities/${appData.value.data.city.id}?fields=districts.name,districts.id,districts.isSuburb,districts.stations,districts.stations.name,districts.stations.id`
 );
 

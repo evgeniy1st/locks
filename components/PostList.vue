@@ -53,7 +53,7 @@ const props = defineProps({
 
 const { api, site } = runtimeConfig.public;
 
-const { data: posts }: any = useFetch(
+const { data: posts }: any = await useFetch(
   `${api}items/articles?limit=${props.count}&offset=${props.offset}&sort=${
     props.sort === 'newest' ? '-date_created' : 'date_created'
   }&filter[status][_eq]=published&filter[site][_eq]=${site}`

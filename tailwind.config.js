@@ -25,6 +25,7 @@ export default {
         'accent-orange': '#FF7A00',
         'light-yellow': '#FEF8DB',
         'light-blue': '#E3F1FF',
+        link: '#3C8AFF',
       },
       fontFamily: {
         roboto: ['Roboto', 'sans-serif'],

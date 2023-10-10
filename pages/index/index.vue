@@ -22,7 +22,7 @@ const runtimeConfig = useRuntimeConfig();
 
 const { site, api } = runtimeConfig.public;
 
-const { data: data }: any = useFetch(
+const { data: data }: any = await useFetch(
   `${api}items/sites/${site}?fields=main_page.*.*`
 );
 </script>

@@ -65,7 +65,7 @@ const props = defineProps({
 
 const { api } = runtimeConfig.public;
 
-const { data: data }: any = useFetch(
+const { data: data }: any = await useFetch(
   `${api}items/${props.block.collection}/${props.block.item}?filter={ "reviews": { "reviews_id": {"status": {"_eq": "published"}} }}&fields=*,reviews.id,reviews.reviews_id.*,reviews.reviews_id.object.client.img,reviews.reviews_id.object.client.first_name,reviews.reviews_id.object.client.last_name`
 );
 
