@@ -1,23 +1,37 @@
 <template>
   <div
     v-if="navigation && 'data' in navigation"
-    class="hidden group-hover:block p-[10px] absolute z-10"
+    class="hidden hover:flex flex-col absolute z-10 nav-el"
+    :class="parent ? 'left-[100%] top-0' : 'group-hover:flex'"
   >
-    <div v-for="navEl in navigationList" :key="navEl.title" class="bg-white">
-      <span>{{ navEl.title }}</span>
-      <ul class="flex flex-col bg-white p-[10px]">
+    <div
+      v-for="navEl in navigationList"
+      :key="navEl.title"
+      class="bg-white py-[10px] shadow-md"
+    >
+      <p v-if="navEl.title" class="text-[#363642] opacity-50 p-[10px]">
+        {{ navEl.title }}
+      </p>
+      <ul
+        v-if="'items' in navEl && navEl.items.length"
+        class="flex flex-col gap-[10px] bg-white"
+      >
         <li
-          v-for="section in navEl.items"
-          :key="section.slug"
-          class="relative group"
+          v-for="page in navEl.items"
+          :key="page.slug"
+          class="relative nav-group px-[30px]"
         >
           <NuxtLink
-            :to="`/${parent ? parent + '/' : ''}${root}/${section.slug}`"
-            class="text-[16px] text-basic-black hover:underline"
+            :to="`/${parent ? parent + '/' : ''}${root}/${page.slug}`"
+            class="text-[16px] text-basic-black hover:text-link whitespace-nowrap"
           >
-            {{ section.display_name }}
+            {{ page.display_name }}
           </NuxtLink>
-          <NestedNavigation :root="section.slug" :parent="root" />
+          <NestedNavigation
+            v-if="page.nested_pages.length"
+            :root="page.slug"
+            :parent="root"
+          />
         </li>
       </ul>
     </div>
@@ -32,7 +46,7 @@ type NavigationEl = {
   slug: string;
   display_name: string;
   group_by: string;
-  sections: NavigationEl[];
+  nested_pages: NavigationEl[];
 };
 
 type NestedNavigation = {
@@ -55,7 +69,7 @@ const props = defineProps({
 });
 
 const { data: navigation }: any = await useFetch(
-  `${api}items/sections?filter[root][_eq]=${props.root}&fields=slug,sections,display_name,group_by`
+  `${api}items/pages?filter[root_page][_eq]=${props.root}&filter[status][_eq]=published&fields=slug,nested_pages,display_name,group_by`
 );
 
 const navigationList = computed(() => {
@@ -76,3 +90,9 @@ const navigationList = computed(() => {
   return result;
 });
 </script>
+
+<style scoped>
+.nav-group:hover > .nav-el {
+  display: flex;
+}
+</style>

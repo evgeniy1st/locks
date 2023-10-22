@@ -26,6 +26,7 @@ export default {
         'light-yellow': '#FEF8DB',
         'light-blue': '#E3F1FF',
         link: '#3C8AFF',
+        'main-blue': '#A4CFFC',
       },
       fontFamily: {
         roboto: ['Roboto', 'sans-serif'],

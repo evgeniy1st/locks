@@ -1,12 +1,15 @@
 <template>
-  <ChildBlockView
-    v-for="childBlock in data.data.navigation"
-    :key="childBlock.id"
-    :block="childBlock"
-  />
-  <pre>
-    {{ data }}
-  </pre>
+  <footer
+    class="w-full mx-auto rounded-[60px] bg-main-blue py-[40px] px-[32px]"
+  >
+    <div v-if="'data' in data" class="flex flex-col gap-[30px]">
+      <ChildBlockView
+        v-for="childBlock in data.data.blocks"
+        :key="childBlock.id"
+        :block="childBlock"
+      />
+    </div>
+  </footer>
 </template>
 
 <script setup lang="ts">

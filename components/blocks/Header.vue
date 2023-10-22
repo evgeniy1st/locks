@@ -45,14 +45,13 @@
     </div>
 
     <div class="flex">
-      <!-- <div v-if="'data' in data">
+      <div v-if="'data' in data">
         <ChildBlockView
           v-for="childBlock in data.data.blocks"
           :key="childBlock.id"
           :block="childBlock"
         />
-      </div> -->
-      <MainNavigation />
+      </div>
       <span class="ml-auto">
         {{ appData.data.city.name }}
       </span>

@@ -4,6 +4,7 @@
       <Title>{{ data.data.main_page.seo_title }}</Title>
       <Meta name="description" :content="data.data.main_page.seo_description" />
       <Meta name="keywords" :content="data.data.main_page.seo_keywords" />
+      <Meta name="robots" content="none" />
     </Head>
     <div class="flex flex-col">
       <BlockView
