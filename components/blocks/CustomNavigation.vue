@@ -67,6 +67,6 @@ const customs = computed(() => {
 });
 
 const navigationList = computed(() => {
-  return [...pages.value, ...articles.value, customs.value];
+  return [...pages.value, ...articles.value, ...customs.value];
 });
 </script>

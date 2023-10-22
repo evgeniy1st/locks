@@ -2,6 +2,7 @@
   <NuxtLink
     v-if="!item.root_page"
     :to="item.slug"
+    target="_blank"
     class="text-[16px] text-basic-black hover:underline"
     >{{ item.display_name }}</NuxtLink
   >
