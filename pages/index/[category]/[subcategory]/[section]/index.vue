@@ -32,6 +32,6 @@ const runtimeConfig = useRuntimeConfig();
 const { site, api } = runtimeConfig.public;
 
 const { data: data }: any = await useFetch(
-  `${api}items/pages/${route.params.category}?fields=*.*`
+  `${api}items/pages/${route.params.section}?fields=*.*`
 );
 </script>
