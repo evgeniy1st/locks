@@ -3,21 +3,36 @@
     v-if="!item.root_page"
     :to="item.slug"
     target="_blank"
-    class="text-[16px] text-basic-black hover:underline"
-    >{{ item.display_name }}</NuxtLink
+    class="text-basic-black"
   >
+    <slot>
+      <span class="hover:underline">
+        {{ item.display_name }}
+      </span>
+    </slot>
+  </NuxtLink>
   <NuxtLink
     v-else-if="item.root_page === 'home'"
     :to="`/${item.slug}`"
-    class="text-[16px] text-basic-black hover:underline"
-    >{{ item.display_name }}</NuxtLink
+    class="text-basic-black"
   >
+    <slot>
+      <span class="hover:underline">
+        {{ item.display_name }}
+      </span>
+    </slot>
+  </NuxtLink>
   <NuxtLink
     v-else-if="item.root_page === 'articles'"
     :to="`/articles/${item.slug}`"
-    class="text-[16px] text-basic-black hover:underline"
-    >{{ item.display_name }}</NuxtLink
+    class="text-basic-black"
   >
+    <slot>
+      <span class="hover:underline">
+        {{ item.display_name }}
+      </span>
+    </slot>
+  </NuxtLink>
   <NestedLink v-else-if="data && Object.keys(data).length" :item="newItem" />
 </template>
 

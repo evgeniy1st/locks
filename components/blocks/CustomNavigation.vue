@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <h3>{{ data.data.title }}</h3>
+    <h3 class="font-bold">{{ data.data.title }}</h3>
     <ul class="flex gap-[30px] items-center py-[6px]">
       <li v-for="item in navigationList" :key="item.slug">
         <NestedLink :item="item" />
