@@ -21,7 +21,7 @@
         </p>
         <div class="w-full text-end">
           <NuxtLink
-            :to="`/articles/${post.slug}`"
+            :to="`/poleznoe/${post.slug}`"
             class="px-[14px] py-[4px] rounded-[15px] text-[14px] border border-basic-black"
           >
             Читать

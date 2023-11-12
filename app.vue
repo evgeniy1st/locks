@@ -8,7 +8,7 @@
 const runtimeConfig = useRuntimeConfig();
 
 await useFetch(
-  `${runtimeConfig.public.api}items/sites/${runtimeConfig.public.site}?fields=city.name,city.id,url,phone,email,whatsapp,telegram`,
+  `${runtimeConfig.public.api}items/sites/${runtimeConfig.public.site}?fields=city.name,city.id,url,phone,email,whatsapp,telegram,articles_page.slug,articles_page.preview_title,articles_page.seo_title`,
   { key: 'appData' }
 );
 </script>
@@ -18,4 +18,9 @@ await useFetch(
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  scroll-behavior: smooth;
+  scroll-margin: 20px;
+}
 </style>

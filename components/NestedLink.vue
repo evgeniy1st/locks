@@ -23,8 +23,8 @@
     </slot>
   </NuxtLink>
   <NuxtLink
-    v-else-if="item.root_page === 'articles'"
-    :to="`/articles/${item.slug}`"
+    v-else-if="item.root_page === 'poleznoe'"
+    :to="`/poleznoe/${item.slug}`"
     class="text-basic-black"
   >
     <slot>

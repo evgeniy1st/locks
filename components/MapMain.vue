@@ -212,6 +212,7 @@
 import { vOnClickOutside } from '@vueuse/components';
 import { ref, computed, watch } from 'vue';
 import { useFetch } from 'nuxt/app';
+
 const runtimeConfig = useRuntimeConfig();
 
 const { data: appData } = useNuxtData('appData');

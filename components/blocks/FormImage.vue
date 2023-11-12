@@ -1,5 +1,6 @@
 <template>
   <section
+    id="form"
     class="w-full mx-auto pt-[160px] px-[32px] pb-[30px] flex items-stretch"
     @click="isSuccess = false"
   >
