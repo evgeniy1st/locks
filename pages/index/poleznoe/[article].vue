@@ -1,5 +1,5 @@
 <template>
-  <div v-if="'data' in data">
+  <div v-if="data && 'data' in data">
     <Header v-if="header" :block="header" :y-scroll="yScroll" />
     <ArticleBreadcrumbs :current="route.params.article.toString()" />
     <article class="flex flex-col">

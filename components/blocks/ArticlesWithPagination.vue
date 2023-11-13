@@ -48,7 +48,7 @@
       v-if="Math.ceil(articles.meta.filter_count / data.data.limit) > 1"
       :current="route.params.pageNumber ? Number(route.params.pageNumber) : 1"
       :total="Math.ceil(articles.meta.filter_count / data.data.limit)"
-      :path="`${route.params.category}/`"
+      :path="`poleznoe/`"
     />
   </section>
 </template>
