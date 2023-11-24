@@ -39,6 +39,7 @@
         </div>
       </div>
     </article>
+    <Linked v-if="linked" :block="linked" />
     <FormImage v-if="form" :block="form" />
     <Footer v-if="footer" :block="footer" />
   </div>
@@ -53,6 +54,7 @@ import Footer from '@/components/blocks/Footer.vue';
 import Hero from '@/components/article/Hero.vue';
 import FormImage from '@/components/blocks/FormImage.vue';
 import ArticleBreadcrumbs from '@/components/article/ArticleBreadcrumbs.vue';
+import Linked from '@/components/article/Linked.vue';
 
 type ContentItem = {
   id: number;
@@ -83,6 +85,12 @@ const contentHeight = computed(() => {
 const header = computed(() => {
   return data?.value?.data?.content.find(
     (b: ContentItem) => b.collection === 'block_header'
+  );
+});
+
+const linked = computed(() => {
+  return data?.value?.data?.content.find(
+    (b: ContentItem) => b.collection === 'article_linked'
   );
 });
 

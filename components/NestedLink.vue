@@ -1,10 +1,5 @@
 <template>
-  <NuxtLink
-    v-if="!item.root_page"
-    :to="item.slug"
-    target="_blank"
-    class="text-basic-black"
-  >
+  <NuxtLink v-if="!item.root_page" :to="item.slug" class="text-basic-black">
     <slot>
       <span class="hover:underline">
         {{ item.display_name }}
@@ -33,7 +28,9 @@
       </span>
     </slot>
   </NuxtLink>
-  <NestedLink v-else-if="data && Object.keys(data).length" :item="newItem" />
+  <NestedLink v-else-if="data && Object.keys(data).length" :item="newItem">
+    <slot></slot>
+  </NestedLink>
 </template>
 
 <script setup>

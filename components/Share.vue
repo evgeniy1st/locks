@@ -2,7 +2,7 @@
   <div
     id="my-share"
     v-on-click-outside="closeModal"
-    class="absolute top-[120%] w-full mx-auto"
+    class="absolute top-[120%] w-full mx-auto z-30"
   ></div>
 </template>
 

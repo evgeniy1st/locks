@@ -4,6 +4,7 @@
     v-if="
       !block.collection.includes('header') &&
       !block.collection.includes('footer') &&
+      !block.collection.includes('linked') &&
       !block.collection.includes('block_form_image')
     "
     v-once
