@@ -20,6 +20,7 @@
         <div class="w-[329px] shrink-0">
           <ContentList
             v-if="titles?.length"
+            :key="route.path"
             :content="titles"
             :y-scroll="yScroll"
           />
@@ -125,5 +126,6 @@ function setYScroll() {
   if (html) {
     yScroll.value = html.scrollTop;
   }
+  console.log(yScroll.value);
 }
 </script>

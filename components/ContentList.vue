@@ -96,7 +96,9 @@ const navList = computed(() => {
 });
 
 onMounted(() => {
-  isMounted.value = true;
+  setTimeout(() => {
+    isMounted.value = true;
+  }, 500);
 });
 
 function goTo(position: number, id: string) {
