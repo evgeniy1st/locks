@@ -24,12 +24,13 @@
             v-for="brand in data.data.brands"
             :key="brand.block_brands_list_id"
           >
-            <div class="carousel__item">
+            <div v-if="!brand.brands_id.page" class="carousel__item">
               <img
-                :src="`${api}assets/${brand.brands_id.logo}`"
-                alt="Логотип бренда"
+                :src="`${api}assets/${brand.brands_id.logo}?format=auto`"
+                :alt="'Логотип бренда ' + brand.brands_id.name"
               />
             </div>
+            <BrandLink v-else :brand="brand.brands_id" />
           </Slide>
 
           <template #addons>
