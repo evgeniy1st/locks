@@ -10,7 +10,16 @@
       class="pt-[40px] px-[60px] pb-[50px] bg-light-blue rounded-[60px] text-basic-black grow"
     >
       <h4 class="mb-[40px] text-[30px] leading-[38px]">
-        {{ data.data.title }}
+        <SlugToPageUrl
+          v-if="data.data.service.page"
+          :slug="data.data.service.page"
+        >
+          <span class="text-deep-blue hover:underline">{{
+            data.data.title
+          }}</span>
+        </SlugToPageUrl>
+
+        <span v-else>{{ data.data.title }}</span>
       </h4>
       <p class="text-[14px] leading-[18px] mb-[10px]">
         {{ data.data.primary_description }}

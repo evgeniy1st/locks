@@ -9,17 +9,28 @@
         {{ data.data.text }}
       </span>
       <div class="flex items-center gap-[10px]">
-        <a href="#">
+        <a
+          :href="`https://wa.me/${appData.data.whatsapp}`"
+          target="_blank"
+          rel="nofollow"
+        >
           <span class="sr-only">Связаться в whatsapp</span>
           <img
-            :src="`${api}assets/${data.data.whatsapp}?format=auto&width=49&height=50`"
+            :src="`${api}assets/${data.data.whatsapp.replace(
+              '+',
+              ''
+            )}?format=auto&width=49&height=50`"
             alt="whatsapp icon"
             width="49"
             height="50"
             class="shrink-0 grow-0"
           />
         </a>
-        <a href="#">
+        <a
+          :href="`https://t.me/${appData.data.telegram.replace('@', '')}`"
+          target="_blank"
+          rel="nofollow"
+        >
           <span class="sr-only">Связаться в telegram</span>
           <img
             :src="`${api}assets/${data.data.telegram}?format=auto&width=50&height=50`"
@@ -29,7 +40,7 @@
             class="shrink-0 grow-0"
           />
         </a>
-        <a href="#">
+        <a :href="`tel:${appData.data.phone}`">
           <span class="sr-only">Связаться по телефону</span>
           <img
             :src="`${api}assets/${data.data.phone}?format=auto&width=50&height=50`"
@@ -60,6 +71,7 @@
 
 <script setup lang="ts">
 import { useFetch } from 'nuxt/app';
+
 const runtimeConfig = useRuntimeConfig();
 
 const props = defineProps({
@@ -68,6 +80,8 @@ const props = defineProps({
     default: () => {},
   },
 });
+
+const { data: appData } = useNuxtData('appData');
 
 const { api } = runtimeConfig.public;
 

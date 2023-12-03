@@ -1,10 +1,10 @@
 <template>
   <div v-if="data && 'data' in data">
-    <Header v-if="header" :block="header" :y-scroll="yScroll" />
+    <Header v-if="header" :block="header" />
     <ArticleBreadcrumbs :current="route.params.article.toString()" />
     <article class="flex flex-col">
       <Hero />
-      <div class="w-full bg-main-blue h-[6px] sticky top-[76px] z-20">
+      <div class="w-full bg-main-blue h-[6px] sticky top-[76px]">
         <div
           class="absolute h-[6px] bg-deep-blue left-0 top-0"
           :style="{
@@ -126,6 +126,6 @@ function setYScroll() {
   if (html) {
     yScroll.value = html.scrollTop;
   }
-  console.log(yScroll.value);
+  // console.log(yScroll.value);
 }
 </script>

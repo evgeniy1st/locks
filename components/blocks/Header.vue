@@ -110,11 +110,9 @@ const props = defineProps({
     type: Object,
     default: () => {},
   },
-  yScroll: {
-    type: Number,
-    default: 0,
-  },
 });
+
+const yScroll = ref(0);
 
 const { api } = runtimeConfig.public;
 
@@ -137,4 +135,20 @@ const phone = computed(() => {
 
   return `${internationalCode} (${providerCode}) ${phoneFirstPart}-${phoneSecondPart}-${phoneThirdPart}`;
 });
+
+onMounted(() => {
+  window.addEventListener('scroll', setYScroll);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', setYScroll);
+});
+
+function setYScroll() {
+  const html = document.querySelector('html');
+  if (html) {
+    yScroll.value = html.scrollTop;
+  }
+  // console.log(yScroll.value);
+}
 </script>

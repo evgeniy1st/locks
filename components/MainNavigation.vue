@@ -42,7 +42,7 @@ const props = defineProps({
 });
 
 const { data: navigation }: any = await useFetch(
-  `${api}items/pages?filter[root_page][_eq]=${props.root}&filter[status][_eq]=published&fields=slug,nested_pages,display_name`
+  `${api}items/pages?filter[root_page][_eq]=${props.root}&filter[status][_eq]=published&fields=slug,nested_pages,display_name&sort=sort`
 );
 </script>
 

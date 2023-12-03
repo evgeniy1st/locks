@@ -12,12 +12,12 @@
       :sort="config.data.post_sort"
     />
     <div class="w-full text-end">
-      <a
-        :href="config.data.button_link"
+      <NuxtLink
+        to="/poleznoe"
         class="bg-accent-orange text-white rounded-full font-700 text-[16px] px-[15px] py-[5px]"
       >
         {{ config.data.button_text }}
-      </a>
+      </NuxtLink>
     </div>
   </section>
 </template>

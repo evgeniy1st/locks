@@ -1,5 +1,5 @@
 <template>
-  <section class="pt-[130px] w-full text-basic-black">
+  <section class="pt-[130px] w-full text-basic-black overflow-x-hidden">
     <h4 class="text-[44px] leading-[50px] mb-[100px] px-[148px]">
       {{ data.data.title }}
     </h4>

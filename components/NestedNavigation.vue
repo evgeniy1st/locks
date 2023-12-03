@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="navigation && 'data' in navigation"
-    class="hidden hover:flex flex-col absolute z-10 nav-el"
+    class="hidden hover:flex flex-col absolute z-50 nav-el"
     :class="parent ? 'left-[100%] top-0' : 'group-hover:flex'"
   >
     <div
