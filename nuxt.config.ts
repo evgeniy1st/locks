@@ -22,7 +22,7 @@ export default defineNuxtConfig({
         { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
         { rel: 'icon', href: '/icon.svg', type: 'image/svg+xml' },
         { rel: 'manifest', href: '/manifest.webmanifest' },
-        { rel: 'yandex-tableau-widget', href: '/tableau.json' },
+        // { rel: 'yandex-tableau-widget', href: '/tableau.json' },
       ],
     },
   },
