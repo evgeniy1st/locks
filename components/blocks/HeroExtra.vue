@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="'data' in data"
+    v-if="data && 'data' in data"
     class="flex flex-col gap-[34px] ml-auto w-[350px] pt-[26px]"
   >
     <ChildBlockView

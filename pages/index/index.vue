@@ -1,5 +1,5 @@
 <template>
-  <div v-if="'data' in data">
+  <div v-if="data && 'data' in data">
     <Head>
       <Title>{{ data.data.main_page.seo_title }}</Title>
       <Meta name="description" :content="data.data.main_page.seo_description" />

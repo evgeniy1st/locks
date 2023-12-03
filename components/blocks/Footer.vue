@@ -2,7 +2,7 @@
   <footer
     class="w-full mx-auto rounded-[60px] bg-main-blue py-[40px] px-[32px]"
   >
-    <div v-if="'data' in data" class="flex flex-col gap-[30px]">
+    <div v-if="data && 'data' in data" class="flex flex-col gap-[30px]">
       <ChildBlockView
         v-if="'blocks' in data.data && data.data.blocks[0]"
         :block="data.data.blocks[0]"

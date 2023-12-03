@@ -1,5 +1,5 @@
 <template>
-  <nav v-if="'data' in navigation">
+  <nav v-if="navigation && 'data' in navigation">
     <ul class="flex gap-[30px] items-center py-[6px]">
       <li
         v-for="item in navigation.data"

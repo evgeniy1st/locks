@@ -47,7 +47,10 @@
     </div>
 
     <div class="flex">
-      <div v-if="'data' in data" :class="yScroll > 150 ? '!text-[12px]' : ''">
+      <div
+        v-if="data && 'data' in data"
+        :class="yScroll > 150 ? '!text-[12px]' : ''"
+      >
         <ChildBlockView
           v-for="childBlock in data.data.blocks"
           :key="childBlock.id"
