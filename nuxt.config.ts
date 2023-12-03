@@ -1,12 +1,29 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  site: {
+    ...(process.env.NODE_ENV === 'production'
+      ? { url: 'https://sandbox.vskrytie-zamkov78.ru' }
+      : {}),
+    name: 'Обслуживание замков в Санкт-Петербурге',
+    description:
+      'Вскрытие, замена и ремонт любых замков в Санкт-Петербурге и Ленинградской области',
+    defaultLocale: 'ru',
+  },
   app: {
+    // <link rel="manifest" href="/manifest.webmanifest">
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
       htmlAttrs: {
         lang: 'ru',
       },
+      link: [
+        { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+        { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
+        { rel: 'icon', href: '/icon.svg', type: 'image/svg+xml' },
+        { rel: 'manifest', href: '/manifest.webmanifest' },
+        { rel: 'yandex-tableau-widget', href: '/tableau.json' },
+      ],
     },
   },
   postcss: {
@@ -31,6 +48,7 @@ export default defineNuxtConfig({
     'vue3-carousel-nuxt',
     'dayjs-nuxt',
     'nuxt-icon',
+    '@nuxtseo/module',
   ],
   imports: {
     dirs: ['./stores'],

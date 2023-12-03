@@ -41,6 +41,7 @@
           >
             <Share
               v-show="isShares"
+              :key="route.fullPath"
               @update="updateShares"
               @close="isShares = false"
             />
