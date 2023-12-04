@@ -10,7 +10,6 @@ export default defineNuxtConfig({
     defaultLocale: 'ru',
   },
   app: {
-    // <link rel="manifest" href="/manifest.webmanifest">
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
