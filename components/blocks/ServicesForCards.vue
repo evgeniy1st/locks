@@ -1,5 +1,8 @@
 <template>
-  <div class="w-[calc(33%_-_20px)] flex flex-col items-center">
+  <div
+    v-if="data && 'data' in data"
+    class="w-[calc(33%_-_20px)] flex flex-col items-center"
+  >
     <img
       v-if="data.data.image"
       :src="`${api}assets/${data.data.image}?format=auto&width=445&height=230`"
