@@ -1,6 +1,8 @@
 {
   "root": ".output/public",
+  "canonical_host": "sandbox.vskrytie-zamkov78.ru",
   "clean_urls": true,
+  "https_only": true,
   "routes": {
     "/_nuxt/*": "/_nuxt/"
   },
