@@ -1,14 +1,14 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  site: {
-    ...(process.env.NODE_ENV === 'production'
-      ? { url: 'https://sandbox.vskrytie-zamkov78.ru' }
-      : {}),
-    name: 'Обслуживание замков в Санкт-Петербурге',
-    description:
-      'Вскрытие, замена и ремонт любых замков в Санкт-Петербурге и Ленинградской области',
-    defaultLocale: 'ru',
-  },
+  // site: {
+  //   ...(process.env.NODE_ENV === 'production'
+  //     ? { url: 'https://sandbox.vskrytie-zamkov78.ru' }
+  //     : {}),
+  //   name: 'Обслуживание замков в Санкт-Петербурге',
+  //   description:
+  //     'Вскрытие, замена и ремонт любых замков в Санкт-Петербурге и Ленинградской области',
+  //   defaultLocale: 'ru',
+  // },
   app: {
     head: {
       charset: 'utf-8',
@@ -47,7 +47,7 @@ export default defineNuxtConfig({
     'vue3-carousel-nuxt',
     'dayjs-nuxt',
     'nuxt-icon',
-    '@nuxtseo/module',
+    // '@nuxtseo/module',
   ],
   imports: {
     dirs: ['./stores'],
