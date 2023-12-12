@@ -27,6 +27,7 @@ export default {
         'light-blue': '#E3F1FF',
         link: '#3C8AFF',
         'main-blue': '#A4CFFC',
+        'orange-hover': '#FFA800',
       },
       fontFamily: {
         roboto: ['Roboto', 'sans-serif'],

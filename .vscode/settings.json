@@ -8,8 +8,8 @@
   ],
   "i18n-ally.localesPaths": ["src/i18n/locales"],
   "editor.codeActionsOnSave": {
-    "source.fixAll": true,
-    "source.fixAll.eslint": true
+    "source.fixAll": "explicit",
+    "source.fixAll.eslint": "explicit"
   },
   "eslint.alwaysShowStatus": true,
   "eslint.validate": ["vue", "javascript", "javascriptreact", "html"],

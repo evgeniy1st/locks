@@ -24,7 +24,7 @@
                 {{ review.reviews_id.object.client.last_name }}
               </span>
               <span>
-                {{ dayjs(review.reviews_id.date_created).format('DD/MM/YYYY') }}
+                {{ dayjs(review.reviews_id.date).format('DD/MM/YYYY') }}
               </span>
             </div>
             <div
