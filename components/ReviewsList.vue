@@ -25,12 +25,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { ref } from 'vue';
 import { useFetch } from 'nuxt/app';
-import { useRoute } from '#vue-router';
+import { useUrlSearchParams } from '@vueuse/core';
 
 const runtimeConfig = useRuntimeConfig();
-const route = useRoute();
+const params = useUrlSearchParams('history');
 
 const props = defineProps({
   count: {
@@ -43,25 +43,24 @@ const props = defineProps({
   },
 });
 
-const offset = ref(0);
 const isLoading = ref(false);
 
 const { api } = runtimeConfig.public;
 
 const { data: data }: any = await useFetch(
   `${api}items/reviews?fields=id,comment_by_master,stars,text,object.master.first_name,object.master.last_name,object.master.skill,object.master.img,object.client.first_name,object.client.last_name,object.client.img,object.services.services_id.title&limit=${
-    props.count
-  }&offset=${route.query.offset ? route.query.offset : 0}&meta=*`
+    props.count + (params?.offset ? Number(params.offset) : 0)
+  }&meta=*`
 );
 
 async function increaseOffset() {
-  route.query.offset = data.value.data.length;
+  params.offset = data.value.data.length;
   isLoading.value = true;
   try {
     const res: any = await $fetch(
       `${api}items/reviews?fields=id,comment_by_master,stars,text,object.master.first_name,object.master.last_name,object.master.skill,object.master.img,object.client.first_name,object.client.last_name,object.client.img,object.services.services_id.title&limit=${
         props.count
-      }&offset=${route.query.offset ? route.query.offset : 0}`
+      }&offset=${params?.offset ? params.offset : 0}`
     );
 
     if (res?.data?.length) {
