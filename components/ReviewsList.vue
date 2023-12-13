@@ -8,7 +8,7 @@
     </li>
   </ul>
   <div
-    v-if="data.data.length < data.meta.total_count"
+    v-if="data && 'data' in data && data.data.length < data.meta.total_count"
     class="w-full flex justify-center mt-[70px]"
   >
     <button
@@ -28,6 +28,10 @@
 import { ref } from 'vue';
 import { useFetch } from 'nuxt/app';
 import { useUrlSearchParams } from '@vueuse/core';
+import { useRoute, useRouter } from 'nuxt/app';
+
+const route = useRoute();
+const router = useRouter();
 
 const runtimeConfig = useRuntimeConfig();
 const params = useUrlSearchParams('history');
@@ -48,22 +52,20 @@ const isLoading = ref(false);
 const { api } = runtimeConfig.public;
 
 const { data: data }: any = await useFetch(
-  `${api}items/reviews?fields=id,comment_by_master,stars,text,object.master.first_name,object.master.last_name,object.master.skill,object.master.img,object.client.first_name,object.client.last_name,object.client.img,object.services.services_id.title&limit=${
-    props.count + (params?.offset ? Number(params.offset) : 0)
+  `${api}items/reviews?fields=id,comment_by_master,date,stars,text,object.master.first_name,object.master.last_name,object.master.skill,object.master.img,object.client.first_name,object.client.last_name,object.client.img,object.services.services_id.title&limit=${
+    props.count + (route.query?.offset ? Number(route.query.offset) : 0)
   }&meta=*`
 );
 
 async function increaseOffset() {
-  params.offset = data.value.data.length;
   isLoading.value = true;
   try {
     const res: any = await $fetch(
-      `${api}items/reviews?fields=id,comment_by_master,stars,text,object.master.first_name,object.master.last_name,object.master.skill,object.master.img,object.client.first_name,object.client.last_name,object.client.img,object.services.services_id.title&limit=${
-        props.count
-      }&offset=${params?.offset ? params.offset : 0}`
+      `${api}items/reviews?fields=id,comment_by_master,date,stars,text,object.master.first_name,object.master.last_name,object.master.skill,object.master.img,object.client.first_name,object.client.last_name,object.client.img,object.services.services_id.title&limit=${props.count}&offset=${data.value.data.length}`
     );
 
     if (res?.data?.length) {
+      router.push(route.path + `?offset=${data.value.data.length}`);
       res.data.forEach((item: any) => data.value.data.push(item));
     }
   } catch (err) {
