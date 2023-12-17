@@ -83,7 +83,7 @@ const { data: data }: any = await useFetch(
 async function sendOrder() {
   isError.value = false;
   isLoading.value = true;
-  isSuccess.value = true;
+  isSuccess.value = false;
   try {
     const res: any = await $fetch(`${api}items/orders`, {
       method: 'POST',

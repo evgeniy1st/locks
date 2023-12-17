@@ -1,8 +1,6 @@
 <template>
   <!-- eslint-disable vue/no-v-html -->
-  <section
-    class="pt-[130px] text-basic-black flex flex-col w-full mx-auto gap-[70px]"
-  >
+  <section class="text-basic-black flex flex-col w-full mx-auto gap-[70px]">
     <h4 class="text-[44px] leading-[50px] px-[148px]">
       {{ data.data.title }}
     </h4>
