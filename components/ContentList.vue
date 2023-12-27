@@ -53,9 +53,9 @@ const runtimeConfig = useRuntimeConfig();
 const { site, api } = runtimeConfig.public;
 
 const { data: data }: any = await useFetch(
-  `${api}items/article_title?fields=*.*&filter[id][_in]=${props.content.join(
-    ','
-  )}`
+  `${api}items/article_title?fields=*.*&filter[id][_in]=${props.content
+    .map((i: any) => i.item)
+    .join(',')}`
 );
 
 const navList = computed(() => {
@@ -74,6 +74,8 @@ const navList = computed(() => {
   const min = Math.min(...typesList);
 
   data.value.data.forEach((item: any, i: number, arr: any[]) => {
+    // @ts-ignore
+    item.sort = props.content.find((el) => el.item == item.id).sort;
     item.offsetLeft = (Number(item.type.replace('h', '')) - min) * 20;
     item.offsetY = Number(item.type.replace('h', '')) === min ? 10 : 0;
     const target = document.getElementById(slugify(item.title));
@@ -92,7 +94,8 @@ const navList = computed(() => {
       }
     }
   });
-  return data.value.data;
+  // @ts-ignore
+  return data.value.data.slice().sort((a, b) => a.sort - b.sort);
 });
 
 onMounted(() => {

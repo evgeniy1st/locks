@@ -126,7 +126,9 @@
     </div>
 
     <div class="flex flex-col gap-[20px]">
-      <p class="text-[26px] leading-[32px]">{{ data.data.form_text }}</p>
+      <p class="text-[26px] leading-[32px]">
+        {{ data.data.form_text }}
+      </p>
       <div class="flex gap-[19px]">
         <input
           v-model="nameInput"

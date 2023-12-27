@@ -108,9 +108,12 @@ const form = computed(() => {
 });
 
 const titles = computed(() => {
+  console.log(data?.value?.data?.content);
   return data?.value?.data?.content
     .filter((item: ContentItem) => item.collection === 'article_title')
-    .map((item: ContentItem) => item.item);
+    .map((item: ContentItem) => {
+      return { item: item.item, sort: item.sort };
+    });
 });
 
 onMounted(() => {
