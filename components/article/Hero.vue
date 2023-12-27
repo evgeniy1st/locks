@@ -32,7 +32,7 @@
         </span>
         <span class="mb-[20px] text-[12px]">
           <span> Время прочтения </span>
-          <span>4-5 минут</span>
+          <span>{{ duration }}</span>
         </span>
 
         <ClientOnly>
@@ -123,7 +123,7 @@
 import { useStorage } from '@vueuse/core';
 import { useFetch } from 'nuxt/app';
 import { useRoute } from 'nuxt/app';
-import {} from 'vue';
+import { computed } from 'vue';
 
 const route = useRoute();
 const runtimeConfig = useRuntimeConfig();
@@ -135,11 +135,30 @@ const socialState = useStorage(`socialState-${route.params.article}`, {
   likes: false,
 });
 
+const props = defineProps({
+  contentHeight: {
+    type: Number,
+    default: 500,
+  },
+});
+
 const { api } = runtimeConfig.public;
 
 const { data: data }: any = await useFetch(
   `${api}items/articles/${route.params.article}?fields=*.*`
 );
+
+const duration = computed(() => {
+  if (props.contentHeight < 600) {
+    return 'менее одной минуты';
+  }
+  let min = Math.ceil(props.contentHeight / 12 / 60);
+  let max = Math.ceil(props.contentHeight / 10 / 60);
+  const result =
+    min === max ? `${min} - ${max + 1} минут` : `${min} - ${max} минут`;
+
+  return result;
+});
 
 onMounted(async () => {
   if (!socialState.value.views) {

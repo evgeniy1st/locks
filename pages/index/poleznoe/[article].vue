@@ -1,10 +1,13 @@
 <template>
   <div v-if="data && 'data' in data">
-    <Header v-if="header" :block="header" />
+    <Header v-if="header" id="stickyHeader" :block="header" />
     <ArticleBreadcrumbs :current="route.params.article.toString()" />
     <article class="flex flex-col">
-      <Hero />
-      <div class="w-full bg-main-blue h-[6px] sticky top-[76px]">
+      <Hero :content-height="contentHeight" />
+      <div
+        class="w-full bg-main-blue h-[6px] sticky"
+        :style="{ top: `${headerHeight}px` }"
+      >
         <div
           class="absolute h-[6px] bg-deep-blue left-0 top-0"
           :style="{
@@ -23,6 +26,7 @@
             :key="route.path"
             :content="titles"
             :y-scroll="yScroll"
+            :header-height="headerHeight"
           />
         </div>
         <div ref="mainContent" class="w-auto">
@@ -68,7 +72,10 @@ type ContentItem = {
 const route = useRoute();
 const runtimeConfig = useRuntimeConfig();
 const yScroll = ref(0);
+const headerHeight = ref(76);
 const mainContent: Ref<HTMLElement | null> = ref(null);
+
+let stickyHeader: null | HTMLElement = null;
 
 const { site, api } = runtimeConfig.public;
 
@@ -108,7 +115,6 @@ const form = computed(() => {
 });
 
 const titles = computed(() => {
-  console.log(data?.value?.data?.content);
   return data?.value?.data?.content
     .filter((item: ContentItem) => item.collection === 'article_title')
     .map((item: ContentItem) => {
@@ -117,6 +123,7 @@ const titles = computed(() => {
 });
 
 onMounted(() => {
+  stickyHeader = document.getElementById('stickyHeader');
   window.addEventListener('scroll', setYScroll);
 });
 
@@ -126,6 +133,9 @@ onBeforeUnmount(() => {
 
 function setYScroll() {
   const html = document.querySelector('html');
+  headerHeight.value = stickyHeader?.offsetHeight
+    ? stickyHeader?.offsetHeight
+    : 76;
   if (html) {
     yScroll.value = html.scrollTop;
   }

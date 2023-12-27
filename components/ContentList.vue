@@ -1,5 +1,5 @@
 <template>
-  <nav class="sticky top-[82px] bg-white z-10">
+  <nav class="sticky bg-white z-10" :style="{ top: `${headerHeight + 6}px` }">
     <h3 class="text-[16px] font-bold mb-[50px]">Содержание</h3>
     <ul v-if="navList && navList.length">
       <li
@@ -43,6 +43,10 @@ const props = defineProps({
   yScroll: {
     type: Number,
     default: 0,
+  },
+  headerHeight: {
+    type: Number,
+    default: 76,
   },
 });
 
