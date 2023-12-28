@@ -9,7 +9,7 @@
         <NuxtLink
           :to="`/${item.slug}`"
           class="text-[16px] text-basic-black hover:text-link"
-          :class="route.path.includes(item.slug) ? 'active-navigation' : ''"
+          active-class="active-navigation"
         >
           {{ item.display_name }}
         </NuxtLink>

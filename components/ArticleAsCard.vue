@@ -1,6 +1,6 @@
 <template>
   <NuxtLink
-    :to="`/poleznoe/${article.slug}`"
+    :to="`/poleznoe/${article.url}`"
     class="w-[392px] h-[280px] rounded-[60px] bg-no-repeat bg-center bg-contain p-[30px] flex flex-col justify-between items-start relative group"
     :style="{
       'background-image': `url(${api}assets/${article.preview_image}?width=392&height=280&format=auto&fit=cover)`,

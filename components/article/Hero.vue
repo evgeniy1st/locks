@@ -1,38 +1,40 @@
 <template>
-  <div v-if="data && data.data">
+  <div v-if="data && data.data.length">
     <div
       class="w-full m-auto bg-cover bg-no-repeat bg-center h-[500px] bg-slate-500 flex flex-col items-center justify-end"
       :style="{
-        'background-image': `url(${api}assets/${data.data.preview_image})`,
+        'background-image': `url(${api}assets/${data.data[0].preview_image})`,
       }"
     >
       <span
         class="px-[10px] py-[5px] rounded-[17px] bg-deep-blue text-white text-[14px] mb-[13px]"
       >
-        {{ data.data.theme ? data.data.theme : 'Интересное' }}
+        {{ data.data[0].theme ? data.data[0].theme : 'Интересное' }}
       </span>
       <h1 class="text-white text-[44px] font[700] leading-[50px] mb-[50px]">
-        {{ data.data.title }}
+        {{ data.data[0].title }}
       </h1>
 
       <div class="text-white flex flex-col items-center">
         <span class="text-[12px]">Автор</span>
         <span class="flex items-center gap-[10px]">
           <img
-            :src="`${api}assets/${data.data.author.img}?width=24&height=24&fit=contain&format=auto`"
+            :src="`${api}assets/${data.data[0].author.img}?width=24&height=24&fit=contain&format=auto`"
             alt="Фото мастера по вскрытию замков"
             width="24"
             height="24"
           />
           <span class="font-[700]"
-            >{{ data.data.author.first_name }}
-            {{ data.data.author.last_name }},</span
+            >{{ data.data[0].author.first_name }}
+            {{ data.data[0].author.last_name }},</span
           >
-          <span> {{ data.data.author.skill }}</span>
+          <span> {{ data.data[0].author.skill }}</span>
         </span>
         <span class="mb-[20px] text-[12px]">
           <span> Время прочтения </span>
-          <span>{{ duration }}</span>
+          <ClientOnly>
+            <span>{{ duration }}</span>
+          </ClientOnly>
         </span>
 
         <ClientOnly>
@@ -49,7 +51,7 @@
               class="px-[10px] py-[4px] rounded-[26px] text-[14px] flex items-center gap-[4px] border active:scale-95 hover:scale-105"
               @click="updateSocial('likes')"
             >
-              <span>{{ data.data.likes }}</span>
+              <span>{{ data.data[0].likes }}</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="15"
@@ -70,7 +72,7 @@
               class="px-[10px] py-[4px] rounded-[26px] text-[14px] flex items-center gap-[4px] border active:scale-95 hover:scale-105"
               @click.stop.prevent="updateSocial('shares')"
             >
-              <span>{{ data.data.shares }}</span>
+              <span>{{ data.data[0].shares }}</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="19"
@@ -90,7 +92,7 @@
             <span
               class="px-[10px] py-[4px] rounded-[26px] text-[14px] flex items-center gap-[4px] border active:scale-95 hover:scale-105"
             >
-              <span>{{ data.data.views }}</span>
+              <span>{{ data.data[0].views }}</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="21"
@@ -145,7 +147,7 @@ const props = defineProps({
 const { api } = runtimeConfig.public;
 
 const { data: data }: any = await useFetch(
-  `${api}items/articles/${route.params.article}?fields=*.*`
+  `${api}items/articles/?filter[url][_eq]=${route.params.article}&fields=*.*`
 );
 
 const duration = computed(() => {
@@ -161,18 +163,21 @@ const duration = computed(() => {
 });
 
 onMounted(async () => {
-  if (!socialState.value.views) {
-    const res = await $fetch(`${api}items/articles/${route.params.article}`, {
-      method: 'PATCH',
-      body: { views: ++data.value.data.views },
-    });
+  if (!socialState.value.views && data.value?.data[0]) {
+    const res = await $fetch(
+      `${api}items/articles/${data.value?.data[0].slug}`,
+      {
+        method: 'PATCH',
+        body: { views: ++data.value.data.views },
+      }
+    );
 
     socialState.value.views = true;
   }
 });
 
 async function updateShares() {
-  await $fetch(`${api}items/articles/${route.params.article}`, {
+  await $fetch(`${api}items/articles/${data.value?.data[0].slug}`, {
     method: 'PATCH',
     body: { shares: ++data.value.data.shares },
   });
@@ -186,10 +191,13 @@ async function updateSocial(param: 'likes' | 'shares') {
       ? ++data.value.data[param]
       : --data.value.data[param];
 
-    const res = await $fetch(`${api}items/articles/${route.params.article}`, {
-      method: 'PATCH',
-      body: { [param]: newVal },
-    });
+    const res = await $fetch(
+      `${api}items/articles/${data.value?.data[0].slug}`,
+      {
+        method: 'PATCH',
+        body: { [param]: newVal },
+      }
+    );
   } else if (param === 'shares') {
     isShares.value = !isShares.value;
   }

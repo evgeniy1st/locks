@@ -1,5 +1,5 @@
 <template>
-  <div v-if="data && 'data' in data">
+  <div v-if="data && 'data' in data && data.data[0]">
     <Header v-if="header" id="stickyHeader" :block="header" />
     <ArticleBreadcrumbs :current="route.params.article.toString()" />
     <article class="flex flex-col">
@@ -31,14 +31,14 @@
         </div>
         <div ref="mainContent" class="w-auto">
           <div class="mb-[70px] text-[38px] leading-[38px]">
-            {{ data.data.preview_text }}
+            {{ data.data[0].preview_text }}
           </div>
           <div>
             <ArticleBLockView
-              v-for="block in data.data.content"
+              v-for="block in data.data[0].content"
               :key="block.id"
               :block="block"
-              :page-data="data.data"
+              :page-data="data.data[0]"
             />
           </div>
         </div>
@@ -80,7 +80,7 @@ let stickyHeader: null | HTMLElement = null;
 const { site, api } = runtimeConfig.public;
 
 const { data: data }: any = await useFetch(
-  `${api}items/articles/${route.params.article}?fields=*.*`
+  `${api}items/articles/?filter[url][_eq]=${route.params.article}&fields=*.*`
 );
 
 const contentHeight = computed(() => {
@@ -91,31 +91,31 @@ const contentHeight = computed(() => {
 });
 
 const header = computed(() => {
-  return data?.value?.data?.content.find(
+  return data?.value?.data[0]?.content.find(
     (b: ContentItem) => b.collection === 'block_header'
   );
 });
 
 const linked = computed(() => {
-  return data?.value?.data?.content.find(
+  return data?.value?.data[0]?.content.find(
     (b: ContentItem) => b.collection === 'article_linked'
   );
 });
 
 const footer = computed(() => {
-  return data?.value?.data?.content.find(
+  return data?.value?.data[0]?.content.find(
     (b: ContentItem) => b.collection === 'block_footer'
   );
 });
 
 const form = computed(() => {
-  return data?.value?.data?.content.find(
+  return data?.value?.data[0]?.content.find(
     (b: ContentItem) => b.collection === 'block_form_image'
   );
 });
 
 const titles = computed(() => {
-  return data?.value?.data?.content
+  return data?.value?.data[0]?.content
     .filter((item: ContentItem) => item.collection === 'article_title')
     .map((item: ContentItem) => {
       return { item: item.item, sort: item.sort };

@@ -24,7 +24,7 @@ const props = defineProps({
 const { api } = runtimeConfig.public;
 
 const { data: data }: any = await useFetch(
-  `${api}items/${props.block.collection}/${props.block.item}?fields=*,pages.pages_slug.slug,pages.pages_slug.display_name,pages.pages_slug.root_page,articles.articles_slug.preview_title,articles.articles_slug.slug`
+  `${api}items/${props.block.collection}/${props.block.item}?fields=*,pages.pages_slug.slug,pages.pages_slug.display_name,pages.pages_slug.root_page,articles.articles_slug.preview_title,articles.articles_slug.slug,articles.articles_slug.url`
 );
 
 const pages = computed(() => {
@@ -46,7 +46,7 @@ const articles = computed(() => {
   }
   return data.value.data.articles.map((item: any) => {
     return {
-      slug: item.articles_slug.slug,
+      slug: item.articles_slug.url,
       display_name: item.articles_slug.preview_title,
       root_page: 'articles',
     };
