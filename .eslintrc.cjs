@@ -36,5 +36,6 @@ module.exports = {
     quotes: ['error', 'single'],
     '@typescript-eslint/no-unused-vars': 'off',
     'vue/multi-word-component-names': 'off',
+    'vue/no-v-html': 'off',
   },
 };

@@ -77,9 +77,15 @@ const navList = computed(() => {
 
   const min = Math.min(...typesList);
 
-  data.value.data.forEach((item: any, i: number, arr: any[]) => {
+  const result = data.value.data.map((item: any, i: number, arr: any[]) => {
     // @ts-ignore
     item.sort = props.content.find((el) => el.item == item.id).sort;
+    console.log(item);
+    return item;
+  });
+
+  result.sort((a: any, b: any) => a.sort - b.sort);
+  result.forEach((item: any, i: number, arr: any[]) => {
     item.offsetLeft = (Number(item.type.replace('h', '')) - min) * 20;
     item.offsetY = Number(item.type.replace('h', '')) === min ? 10 : 0;
     const target = document.getElementById(slugify(item.title));
@@ -98,14 +104,11 @@ const navList = computed(() => {
       }
     }
   });
-  // @ts-ignore
-  return data.value.data.slice().sort((a, b) => a.sort - b.sort);
+  return result;
 });
 
 onMounted(() => {
-  setTimeout(() => {
-    isMounted.value = true;
-  }, 500);
+  isMounted.value = true;
 });
 
 function goTo(position: number, id: string) {
