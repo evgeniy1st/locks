@@ -80,7 +80,6 @@ const navList = computed(() => {
   const result = data.value.data.map((item: any, i: number, arr: any[]) => {
     // @ts-ignore
     item.sort = props.content.find((el) => el.item == item.id).sort;
-    console.log(item);
     return item;
   });
 

@@ -179,7 +179,7 @@ onMounted(async () => {
 async function updateShares() {
   await $fetch(`${api}items/articles/${data.value?.data[0].slug}`, {
     method: 'PATCH',
-    body: { shares: ++data.value.data.shares },
+    body: { shares: ++data.value.data[0].shares },
   });
 }
 
@@ -188,8 +188,8 @@ async function updateSocial(param: 'likes' | 'shares') {
   if (param === 'likes') {
     socialState.value[param] = !socialState.value[param];
     newVal = socialState.value[param]
-      ? ++data.value.data[param]
-      : --data.value.data[param];
+      ? ++data.value.data[0][param]
+      : --data.value.data[0][param];
 
     const res = await $fetch(
       `${api}items/articles/${data.value?.data[0].slug}`,
