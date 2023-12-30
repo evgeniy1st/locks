@@ -3,7 +3,6 @@
     <h3 class="font-bold">{{ data.data.title }}</h3>
     <ul class="flex gap-[30px] items-center py-[6px]">
       <li v-for="item in navigationList" :key="item.slug">
-        {{ item }}
         <NestedLink :item="item" />
       </li>
     </ul>
