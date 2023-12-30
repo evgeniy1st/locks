@@ -1,10 +1,10 @@
 <template>
   <NestedLink
-    v-if="page"
+    v-if="page && 'data' in page && page.data.length"
     :item="{
-      root_page: page.data.root_page,
+      root_page: page.data[0]?.root_page?.url,
       display_name: '',
-      slug: page.data.slug,
+      slug: page.data[0].url,
     }"
   >
     <slot />
@@ -25,6 +25,6 @@ const props = defineProps({
 const { api } = runtimeConfig.public;
 
 const { data: page }: any = await useFetch(
-  `${api}items/pages/${props.slug}?fields=slug,preview_title,root_page`
+  `${api}items/pages?filter[slug][_eq]=${props.slug}&fields=url,preview_title,root_page.url`
 );
 </script>

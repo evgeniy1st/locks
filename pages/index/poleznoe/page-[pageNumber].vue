@@ -3,7 +3,6 @@
     <Head>
       <Title>{{ data.data.seo_title }}</Title>
       <Meta name="description" :content="data.data.seo_description" />
-      <Meta name="keywords" :content="data.data.seo_keywords" />
     </Head>
     <div class="flex flex-col">
       <BlockView

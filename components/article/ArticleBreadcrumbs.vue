@@ -5,7 +5,7 @@
     </li>
     <li>
       <NuxtLink
-        :to="`/${appData.data.articles_page.slug}`"
+        :to="`/${appData.data.articles_page.url}`"
         class="hover:underline text-[14px]"
       >
         <span v-if="appData.data.articles_page.preview_title">
@@ -39,8 +39,8 @@ const props = defineProps({
 });
 
 const { data: data }: any = await useFetch(
-  `${api}items/pages?filter[slug][_in]=${Object.values(route.params).join(
+  `${api}items/pages?filter[url][_in]=${Object.values(route.params).join(
     ','
-  )}&fields=display_name,slug`
+  )}&fields=display_name,url`
 );
 </script>

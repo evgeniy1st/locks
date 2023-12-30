@@ -1,13 +1,12 @@
 <template>
   <div v-if="data && 'data' in data">
     <Head>
-      <Title>{{ data.data.seo_title }}</Title>
-      <Meta name="description" :content="data.data.seo_description" />
-      <Meta name="keywords" :content="data.data.seo_keywords" />
+      <Title>{{ data.data[0].seo_title }}</Title>
+      <Meta name="description" :content="data.data[0].seo_description" />
     </Head>
     <div class="flex flex-col">
       <BlockView
-        v-for="block in data.data.blocks"
+        v-for="block in data.data[0].blocks"
         :key="block.id"
         :block="block"
       />
@@ -19,23 +18,12 @@
 import { useFetch } from 'nuxt/app';
 import { useRoute } from 'nuxt/app';
 const route = useRoute();
-console.log(
-  route.params.category +
-    '/' +
-    route.params.subcategory +
-    '/' +
-    route.params.section +
-    '/' +
-    route.params.subsection +
-    '/' +
-    route.params.nested
-);
 
 const runtimeConfig = useRuntimeConfig();
 
 const { site, api } = runtimeConfig.public;
 
 const { data: data }: any = await useFetch(
-  `${api}items/pages/${route.params.nested}?fields=*.*`
+  `${api}items/pages?filter[url][_eq]=${route.params.nested}&fields=*.*`
 );
 </script>

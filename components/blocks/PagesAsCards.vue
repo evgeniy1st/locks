@@ -7,9 +7,9 @@
   >
     <NestedLink
       :item="{
-        root_page: data.data.pages[0].pages_slug.root_page,
+        root_page: data.data.pages[0].pages_slug?.root_page?.url,
         display_name: data.data.pages[0].pages_slug.preview_title,
-        slug: data.data.pages[0].pages_slug.slug,
+        slug: data.data.pages[0].pages_slug.url,
       }"
       class="flex flex-col group max-w-[445px]"
     >
@@ -44,11 +44,11 @@
       <!-- @vue-ignore -->
       <NestedLink
         v-for="card in data.data.pages.slice(1).sort((a, b) => a.sort - b.sort)"
-        :key="card.pages_slug.slug"
+        :key="card.pages_slug.url"
         :item="{
-          root_page: card.pages_slug.root_page,
+          root_page: card.pages_slug?.root_page?.url,
           display_name: card.pages_slug.preview_title,
-          slug: card.pages_slug.slug,
+          slug: card.pages_slug.url,
         }"
         class="flex even:flex-row-reverse max-h-[268px] group"
       >
@@ -107,6 +107,6 @@ const props = defineProps({
 const { api } = runtimeConfig.public;
 
 const { data: data }: any = await useFetch(
-  `${api}items/${props.block.collection}/${props.block.item}?fields=pages.sort,pages.pages_slug.preview_image,pages.pages_slug.preview_title,pages.pages_slug.slug,pages.pages_slug.display_name,pages.pages_slug.preview_description,pages.pages_slug.root_page,pages.pages_slug.preview_bg`
+  `${api}items/${props.block.collection}/${props.block.item}?fields=pages.sort,pages.pages_slug.preview_image,pages.pages_slug.url,pages.pages_slug.preview_title,pages.pages_slug.slug,pages.pages_slug.display_name,pages.pages_slug.preview_description,pages.pages_slug.root_page,pages.pages_slug.root_page.url,pages.pages_slug.preview_bg`
 );
 </script>

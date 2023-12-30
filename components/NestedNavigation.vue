@@ -18,11 +18,11 @@
       >
         <li
           v-for="page in navEl.items"
-          :key="page.slug"
+          :key="page.url"
           class="relative nav-group px-[30px]"
         >
           <NuxtLink
-            :to="`/${parent ? parent + '/' : ''}${root}/${page.slug}`"
+            :to="`/${parent ? parent + '/' : ''}${root}/${page.url}`"
             class="text-[16px] text-basic-black hover:text-link whitespace-nowrap"
           >
             {{ page.display_name }}
@@ -43,6 +43,7 @@ import { computed } from 'vue';
 import { useFetch } from 'nuxt/app';
 
 type NavigationEl = {
+  url: string;
   slug: string;
   display_name: string;
   group_by: string;
@@ -69,7 +70,7 @@ const props = defineProps({
 });
 
 const { data: navigation }: any = await useFetch(
-  `${api}items/pages?filter[root_page][_eq]=${props.root}&filter[status][_eq]=published&fields=slug,nested_pages,display_name,group_by`
+  `${api}items/pages?filter[root_page][_eq]=${props.root}&filter[status][_eq]=published&fields=url,nested_pages,display_name,group_by,slug`
 );
 
 const navigationList = computed(() => {

@@ -1,9 +1,9 @@
 <template>
   <NestedLink
     :item="{
-      root_page: page.data.root_page,
+      root_page: page.data.root_page?.url,
       display_name: '',
-      slug: page.data.slug,
+      slug: page.data.url,
     }"
     class="carousel__item"
   >
@@ -29,6 +29,6 @@ const props = defineProps({
 const { api } = runtimeConfig.public;
 
 const { data: page }: any = await useFetch(
-  `${api}items/pages/${props.brand.page}?fields=slug,preview_title,root_page`
+  `${api}items/pages/${props.brand.page}?fields=url,root_page.url`
 );
 </script>

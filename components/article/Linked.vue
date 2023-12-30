@@ -31,7 +31,7 @@
       >
         <li
           v-for="article in data.data.articles.slice(current, current + 2)"
-          :key="article.articles_slug.slug"
+          :key="article.articles_slug.url"
         >
           <ArticleAsCard :article="article.articles_slug" />
         </li>

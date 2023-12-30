@@ -3,11 +3,11 @@
     <ul class="flex gap-[30px] items-center py-[6px]">
       <li
         v-for="item in navigation.data"
-        :key="item.slug"
+        :key="item.url"
         class="relative group"
       >
         <NuxtLink
-          :to="`/${item.slug}`"
+          :to="`/${item.url}`"
           class="text-[16px] text-basic-black hover:text-link"
           active-class="active-navigation"
         >
@@ -15,7 +15,7 @@
         </NuxtLink>
         <NestedNavigation
           v-if="withNested && item.nested_pages.length"
-          :root="item.slug"
+          :root="item.url"
         />
       </li>
     </ul>
@@ -42,7 +42,7 @@ const props = defineProps({
 });
 
 const { data: navigation }: any = await useFetch(
-  `${api}items/pages?filter[root_page][_eq]=${props.root}&filter[status][_eq]=published&fields=slug,nested_pages,display_name&sort=sort`
+  `${api}items/pages?filter[root_page][_eq]=${props.root}&filter[status][_eq]=published&fields=url,nested_pages.url,display_name&sort=sort`
 );
 </script>
 

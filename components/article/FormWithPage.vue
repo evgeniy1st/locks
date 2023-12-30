@@ -5,9 +5,9 @@
   >
     <NestedLink
       :item="{
-        root_page: data.data.page.root_page,
+        root_page: data.data.page?.root_page?.url,
         display_name: data.data.page.display_name,
-        slug: data.data.page.slug,
+        slug: data.data.page.url,
       }"
       class="flex flex-col w-[445px] shrink-0"
     >
@@ -77,7 +77,7 @@ const props = defineProps({
 const { api, site } = runtimeConfig.public;
 
 const { data: data }: any = await useFetch(
-  `${api}items/${props.block.collection}/${props.block.item}?fields=*.*`
+  `${api}items/${props.block.collection}/${props.block.item}?fields=*.*,page.root_page.url`
 );
 
 async function sendOrder() {

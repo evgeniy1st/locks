@@ -1,7 +1,7 @@
 <template>
   <section class="w-full mx-auto mt-[130px] px-[32px]">
     <ul class="flex items-center gap-[20px] flex-wrap justify-start">
-      <li v-for="article in articles.data" :key="article.slug" class="flex">
+      <li v-for="article in articles.data" :key="article.url" class="flex">
         <ArticleAsCard :article="article" />
       </li>
     </ul>

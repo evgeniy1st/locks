@@ -3,10 +3,10 @@
     <li>
       <NuxtLink to="/" class="text-[14px]">Главная</NuxtLink>
     </li>
-    <li v-for="item in breadcrumbs.reverse()" :key="item.slug">
+    <li v-for="item in breadcrumbs.reverse()" :key="item.url">
       <NuxtLink
-        v-if="(item.slug[0] !== '/' ? '/' : '') + item.slug !== route.path"
-        :to="(item.slug[0] !== '/' ? '/' : '') + item.slug"
+        v-if="(item.url[0] !== '/' ? '/' : '') + item.url !== route.path"
+        :to="(item.url[0] !== '/' ? '/' : '') + item.url"
         class="hover:underline text-[14px]"
       >
         {{ '/ ' + item.display_name }}
@@ -24,7 +24,7 @@ import { useFetch } from 'nuxt/app';
 import { useRoute } from 'nuxt/app';
 
 type BreadcrumbsItem = {
-  slug: string;
+  url: string;
   display_name: string;
 };
 
@@ -41,9 +41,9 @@ const props = defineProps({
 const { api } = runtimeConfig.public;
 
 const { data: data }: any = await useFetch(
-  `${api}items/pages?filter[slug][_in]=${Object.values(route.params).join(
+  `${api}items/pages?filter[url][_in]=${Object.values(route.params).join(
     ','
-  )}&fields=display_name,slug`
+  )}&fields=display_name,url`
 );
 
 const breadcrumbs = computed(() => {
@@ -59,14 +59,14 @@ const breadcrumbs = computed(() => {
   data.value.data.forEach((element: BreadcrumbsItem, i: number) => {
     result.push({
       display_name: element.display_name,
-      slug:
+      url:
         JSON.parse(JSON.stringify(data.value.data))
           .slice(i + 1)
           .reverse()
-          .map((item: BreadcrumbsItem) => item.slug)
+          .map((item: BreadcrumbsItem) => item.url)
           .join('/') +
         '/' +
-        element.slug,
+        element.url,
     });
   });
   return result;

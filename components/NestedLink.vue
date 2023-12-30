@@ -28,7 +28,10 @@
       </span>
     </slot>
   </NuxtLink>
-  <NestedLink v-else-if="data && Object.keys(data).length" :item="newItem">
+  <NestedLink
+    v-else-if="data && Object.keys(data.data[0]).length"
+    :item="newItem"
+  >
     <slot></slot>
   </NestedLink>
 </template>
@@ -54,10 +57,10 @@ const { data: data } = await useAsyncData(
       props.item.root_page === 'home' ||
       props.item.root_page === 'articles'
     ) {
-      return new Promise((resolve) => resolve({ data: {} }));
+      return new Promise((resolve) => resolve({ data: [{}] }));
     }
     return $fetch(
-      `${api}items/pages/${props.item.root_page}?fields=slug,root_page`
+      `${api}items/pages?filter[url][_eq]=${props.item.root_page}&fields=root_page.url,url,display_name`
     );
   }
 );
@@ -65,19 +68,20 @@ const { data: data } = await useAsyncData(
 const newItem = computed(() => {
   if (
     !data.value ||
-    !data.value?.data ||
-    !Object.keys(data.value?.data).length
+    !data.value?.data[0] ||
+    !Object.keys(data.value?.data[0]).length
   ) {
     return {};
   }
   return {
     slug: `${
-      data.value.data.root_page && data.value.data.root_page !== 'home'
-        ? '/' + data.value.data.root_page
+      data.value.data[0].root_page?.url &&
+      data.value.data[0].root_page.url !== 'home'
+        ? '/' + data.value.data[0].root_page.url
         : ''
     }/${props.item.root_page}/${props.item.slug}`,
     display_name: props.item.display_name,
-    root: data.value.data.root_page,
+    root: data.value.data[0].root_page?.url,
   };
 });
 </script>
