@@ -19,7 +19,7 @@
   </NuxtLink>
   <NuxtLink
     v-else-if="item.root_page === 'poleznoe'"
-    :to="`/poleznoe/${item.url}`"
+    :to="`/poleznoe/${item.slug}`"
     class="text-basic-black"
   >
     <slot>
@@ -55,7 +55,7 @@ const { data: data } = await useAsyncData(
     if (
       !props.item.root_page ||
       props.item.root_page === 'home' ||
-      props.item.root_page === 'articles'
+      props.item.root_page === 'poleznoe'
     ) {
       return new Promise((resolve) => resolve({ data: [{}] }));
     }
