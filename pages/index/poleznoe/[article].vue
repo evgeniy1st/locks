@@ -1,7 +1,7 @@
 <template>
   <div v-if="data && 'data' in data && data.data[0]">
     <Header v-if="header" id="stickyHeader" :block="header" />
-    <ArticleBreadcrumbs :current="route.params.article.toString()" />
+    <ArticleBreadcrumbs :current="data.data[0].title" />
     <article class="flex flex-col">
       <Hero :content-height="contentHeight" />
       <div
