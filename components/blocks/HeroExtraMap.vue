@@ -18,10 +18,7 @@
         class="relative z-10 shrink-0 grow-0"
       />
     </div>
-    <a
-      :href="data.data.link"
-      class="leading-[normal] text-[16px] max-w-[134px]"
-    >
+    <a href="#map" class="leading-[normal] text-[16px] max-w-[134px]">
       {{ data.data.text }}
     </a>
   </div>

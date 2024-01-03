@@ -6,7 +6,7 @@
     </h3>
     <ul class="flex items-center w-full flex-wrap pt-[95px] gap-y-[30px]">
       <li v-for="(item, i) in data.data.items" :key="i" class="w-1/3">
-        <span class="text-[200px] font-[900] strokeme leading-[70px]">{{
+        <span class="text-[200px] font-[900] strokeme leading-[95px]">{{
           i + 1
         }}</span>
         <div

@@ -1,5 +1,6 @@
 <template>
   <section
+    id="map"
     class="py-[130px] w-full text-basic-black text-[16px] leading-[normal]"
   >
     <div class="flex gap-[110px] items-start mb-[71px] px-[148px]">

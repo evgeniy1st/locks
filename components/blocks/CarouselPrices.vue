@@ -59,13 +59,30 @@
       </span>
     </div>
 
-    <NuxtLink
-      v-if="data.data.button_link"
-      :to="data.data.button_link"
-      class="rounded-[30px] py-[5px] px-[14px] bg-accent-orange text-white text-[16px] font-[700] flex items-center justify-center mr-[20px]"
+    <NestedLink
+      v-if="
+        data.data.button_link &&
+        !data.data.button_link.includes('#') &&
+        link_page &&
+        link_page.data
+      "
+      :item="{
+        root_page: link_page.data[0].root_page?.url,
+        display_name: link_page.data[0].display_name,
+        slug: link_page.data[0].url,
+      }"
+      class="bg-accent-orange text-white px-[14px] py-[5px] rounded-[30px] flex items-center justify-center text-[16px] font-[700]"
     >
       {{ data.data.button_text }}
-    </NuxtLink>
+    </NestedLink>
+
+    <a
+      v-else
+      :href="data.data.button_link"
+      class="bg-accent-orange text-white px-[14px] py-[5px] rounded-[30px] flex items-center justify-center text-[16px] font-[700]"
+    >
+      {{ data.data.button_text }}
+    </a>
   </div>
 </template>
 
@@ -84,5 +101,9 @@ const { api } = runtimeConfig.public;
 
 const { data: data }: any = await useFetch(
   `${api}items/${props.block.collection}/${props.block.item}?fields=*,items.services_id.min_price,items.services_id.title,items.services_id.page`
+);
+
+const { data: link_page }: any = await useFetch(
+  `${api}items/pages?filter[url][_eq]=${data.value.data.button_link}&fields=root_page.url,url,display_name`
 );
 </script>
