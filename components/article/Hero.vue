@@ -168,7 +168,7 @@ onMounted(async () => {
       `${api}items/articles/${data.value?.data[0].slug}`,
       {
         method: 'PATCH',
-        body: { views: ++data.value.data.views },
+        body: { views: ++data.value.data[0].views },
       }
     );
 
