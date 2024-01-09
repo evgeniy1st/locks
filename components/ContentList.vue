@@ -1,6 +1,6 @@
 <template>
   <nav class="sticky bg-white z-10" :style="{ top: `${headerHeight + 6}px` }">
-    <h3 class="text-[16px] font-bold mb-[50px]">Содержание</h3>
+    <span class="text-[16px] font-bold mb-[50px]">Содержание</span>
     <ul v-if="navList && navList.length">
       <li
         v-for="link in navList"

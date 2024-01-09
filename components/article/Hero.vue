@@ -11,9 +11,12 @@
       >
         {{ data.data[0].theme ? data.data[0].theme : 'Интересное' }}
       </span>
-      <h1 class="text-white text-[44px] font[700] leading-[50px] mb-[50px]">
-        {{ data.data[0].title }}
-      </h1>
+      <GetTitle
+        v-if="data?.data[0]?.title"
+        :title="data.data[0].title"
+        :type="data.data[0].title_type"
+        class="text-white text-[44px] font[700] leading-[50px] mb-[50px]"
+      />
 
       <div class="text-white flex flex-col items-center">
         <span class="text-[12px]">Автор</span>

@@ -150,7 +150,12 @@
       class="w-full px-[148px] flex items-start gap-[83px] text-[12px] text-basic-black"
     >
       <div class="w-max-[383px] leading-[18px]">
-        <h5 class="mb-[22px] font-[700]">Районы Санкт-Петербурга</h5>
+        <GetTitle
+          v-if="districtListTitle"
+          :title="districtListTitle"
+          :type="districtListTitleType"
+          class="mb-[22px] font-[700]"
+        />
         <ul class="flex flex-wrap">
           <!-- @vue-ignore -->
           <li
@@ -177,9 +182,12 @@
       </div>
 
       <div class="leading-[18px] grow">
-        <h5 class="mb-[22px] font-[700]">
-          Пригороды Санкт-Петербурга (Ленинградская область)
-        </h5>
+        <GetTitle
+          v-if="suburbListTitle"
+          :title="suburbListTitle"
+          :type="suburbListTitleType"
+          class="mb-[22px] font-[700]"
+        />
         <ul class="flex flex-wrap gap-x-[34px]">
           <!-- @vue-ignore -->
           <li
@@ -219,6 +227,22 @@ const { data: appData } = useNuxtData('appData');
 
 const props = defineProps({
   img: {
+    type: String,
+    default: '',
+  },
+  suburbListTitleType: {
+    type: String,
+    default: 'span',
+  },
+  suburbListTitle: {
+    type: String,
+    default: '',
+  },
+  districtListTitleType: {
+    type: String,
+    default: 'span',
+  },
+  districtListTitle: {
     type: String,
     default: '',
   },

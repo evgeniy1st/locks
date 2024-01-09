@@ -8,12 +8,15 @@
         :key="item.title"
         class="py-[20px] px-[36px] rounded-[40px] flex flex-col gap-[5px] shrink-0 grow-0 w-[253px] text-white bg-[rgba(60,138,255,0.60)] blue-glass-shadow"
       >
-        <h4 class="text-[16px] font-[700]">
-          {{ item.title }}
-        </h4>
-        <h5 class="text-[14px] leading-[18px]">
+        <GetTitle
+          v-if="item.title"
+          :title="item.title"
+          :type="item.title_type ? item.title_type : 'span'"
+          class="text-[16px] font-[700]"
+        />
+        <p class="text-[14px] leading-[18px]">
           {{ item.description }}
-        </h5>
+        </p>
       </li>
     </ul>
     <button

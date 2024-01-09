@@ -13,9 +13,11 @@
           width="29"
           height="29"
         />
-        <span class="text-basic-black text-[26px] grow-0 shrink-0">
-          {{ data.data.title }}
-        </span>
+        <GetTitle
+          :title="data.data.title"
+          :type="data.data?.title_type ? data.data?.title_type : 'span'"
+          class="text-basic-black text-[26px] grow-0 shrink-0"
+        />
       </RouterLink>
 
       <div class="flex flex-col gap-[8px] items-end">

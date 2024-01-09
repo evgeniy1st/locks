@@ -1,8 +1,10 @@
 <template>
   <section class="pt-[130px]">
-    <h3 class="text-[44px] leading-[50px] px-[148px] text-basic-black">
-      {{ data.data.title }}
-    </h3>
+    <GetTitle
+      :title="data.data.title"
+      :type="data.data?.title_type ? data.data?.title_type : 'span'"
+      class="text-[44px] leading-[50px] px-[148px] text-basic-black"
+    />
 
     <div class="p-[32px]">
       <div class="rounded-[60px] bg-light-blue flex gap-[27px]">

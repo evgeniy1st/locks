@@ -5,24 +5,33 @@
       :key="post.id"
       class="flex items-start gap-[20px]"
     >
-      <img
-        :src="`${api}assets/${post.preview_image}?format=auto&width=329&height=209&fit=cover`"
-        alt="Превью статьи"
-        width="329"
-        height="209"
-        class="rounded-[60px]"
-      />
+      <NuxtLink
+        :to="`/poleznoe/${post.url}`"
+        class="rounded-[60px] shrink-0 hover:scale-105 duration-150"
+      >
+        <img
+          :src="`${api}assets/${post.preview_image}?format=auto&width=329&height=209&fit=cover`"
+          alt="Превью статьи"
+          width="329"
+          height="209"
+          class="rounded-[60px]"
+        />
+      </NuxtLink>
+
       <div class="flex flex-col gap-[20px] items-start grow">
-        <h5 class="text-[30px] leading-[38px]">
-          {{ post.title }}
-        </h5>
+        <GetTitle
+          v-if="post?.title"
+          :title="post.title"
+          :type="postTitleType"
+          class="text-[30px] leading-[38px]"
+        />
         <p class="text-[16px] leading-[normal]">
           {{ post.preview_text }}
         </p>
         <div class="w-full text-end">
           <NuxtLink
             :to="`/poleznoe/${post.url}`"
-            class="px-[14px] py-[4px] rounded-[15px] text-[14px] border border-basic-black"
+            class="px-[14px] py-[4px] rounded-[15px] text-[14px] border border-basic-black hover:scale-105 duration-150"
           >
             Читать
           </NuxtLink>
@@ -48,6 +57,10 @@ const props = defineProps({
   sort: {
     type: String,
     default: 'newest',
+  },
+  postTitleType: {
+    type: String,
+    default: 'span',
   },
 });
 

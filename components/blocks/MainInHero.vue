@@ -12,19 +12,27 @@
       ></video>
     </div>
     <div class="absolute bottom-0 left-0 flex flex-col items-start">
-      <span class="flex items-center gap-[10px]">
+      <GetTitle
+        v-if="data?.data?.subtitle"
+        :title="data.data.subtitle"
+        :type="data.data.subtitle_type"
+        class="flex items-center gap-[10px]"
+      >
         <span
           class="text-[140px] font-[900] strokeme text-deep-blue leading-[50px]"
         >
-          {{ data.data.content[0].accent_text.slice(0, 2) }}
+          {{ data.data.subtitle.slice(0, 2) }}
         </span>
         <span class="text-[30px] text-deep-blue max-w-[150px] leading-[38px]">
-          {{ data.data.content[0].accent_text.slice(2) }}
+          {{ data.data.subtitle.slice(2) }}
         </span>
-      </span>
-      <span class="text-[44px] text-basic-black max-w-[354px] leading-[50px]">
-        {{ data.data.content[0].text }}
-      </span>
+      </GetTitle>
+      <GetTitle
+        v-if="data?.data?.title"
+        :title="data.data.title"
+        :type="data.data.title_type"
+        class="text-[44px] text-basic-black max-w-[354px] leading-[50px]"
+      />
     </div>
   </div>
 </template>

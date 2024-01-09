@@ -1,9 +1,12 @@
 <template>
   <section class="pt-[100px] w-full px-[32px]">
     <div class="flex items-center gap-[15px] mb-[30px]">
-      <h2 class="text-[30px] leading-[38px] grow-0 shrink-0">
-        {{ data.data.name }}
-      </h2>
+      <GetTitle
+        v-if="data?.data?.name"
+        :title="data.data.name"
+        :type="titleType"
+        class="text-[30px] leading-[38px] grow-0 shrink-0"
+      />
       <span class="grow h-[1px] bg-black shrink-0 w-1/2"></span>
     </div>
 
@@ -96,6 +99,10 @@ const props = defineProps({
   categoryId: {
     type: [String, Number],
     default: '',
+  },
+  titleType: {
+    type: String,
+    default: 'span',
   },
 });
 

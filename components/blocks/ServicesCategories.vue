@@ -4,6 +4,7 @@
       v-for="category in data.data.categories"
       :key="category.id"
       :category-id="category.services_categories_id"
+      :title-type="data.data.title_type"
     />
   </section>
 </template>

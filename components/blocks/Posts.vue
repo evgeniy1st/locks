@@ -2,14 +2,18 @@
   <section
     class="pt-[130px] px-[148px] text-basic-black flex flex-col gap-[70px]"
   >
-    <h4 class="text-[44px] leading-[50px]">
-      {{ config.data.title }}
-    </h4>
+    <GetTitle
+      v-if="config?.data?.title"
+      :title="config.data.title"
+      :type="config.data.title_type"
+      class="text-[44px] leading-[50px]"
+    />
 
     <PostList
       :count="config.data.post_count"
       :offset="config.data.post_offset"
       :sort="config.data.post_sort"
+      :post-title-type="config.data.post_title_type"
     />
     <div class="w-full text-end">
       <NuxtLink
