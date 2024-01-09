@@ -18,11 +18,21 @@
     <div
       class="p-[40px] rounded-[60px] border border-basic-black flex gap-[20px] flex-col"
     >
-      <h5 class="text-[16px] leading-[normal]">
+      <GetTitle
+        v-if="data?.title"
+        :title="data.title"
+        :type="titleType ? titleType : 'span'"
+        class="text-[16px] leading-[normal] block"
+      >
         <button class="hover:underline text-left" @click="isOpen = true">
           {{ data.title }}
         </button>
-      </h5>
+      </GetTitle>
+      <!-- <h5 class="text-[16px] leading-[normal]">
+        <button class="hover:underline text-left" @click="isOpen = true">
+          {{ data.title }}
+        </button>
+      </h5> -->
       <span class="text-[30px] leading-[38px]">
         {{ new Intl.NumberFormat('ru-RU').format(Number(data.cost)) }}
         руб
@@ -65,9 +75,10 @@
           />
         </svg>
       </button>
-      <h6 class="text-[30px] leading-[38px]">
+
+      <span class="text-[30px] leading-[38px] block">
         {{ data.title }}
-      </h6>
+      </span>
 
       <div class="w-full flex gap-[30px] items-start overflow-y-auto">
         <div class="flex flex-col gap-[30px]">
@@ -228,6 +239,10 @@ const props = defineProps({
   data: {
     type: Object,
     default: () => {},
+  },
+  titleType: {
+    type: String,
+    default: '',
   },
 });
 

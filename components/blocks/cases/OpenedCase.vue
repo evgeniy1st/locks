@@ -2,7 +2,13 @@
   <div
     class="border border-main-blue rounded-[60px] p-[40px] flex flex-col gap-[40px]"
   >
-    <h5 class="text-[30px] leading-[38px]">{{ data.title }}</h5>
+    <GetTitle
+      v-if="data?.title"
+      :title="data.title"
+      :type="titleType ? titleType : 'span'"
+      class="text-[30px] leading-[38px] block"
+    />
+    <!-- <h5 class="text-[30px] leading-[38px]">{{ data.title }}</h5> -->
 
     <div class="flex gap-[95px]">
       <div class="flex flex-col gap-[30px] shrink-0">
@@ -159,6 +165,10 @@ const props = defineProps({
   data: {
     type: Object,
     default: () => {},
+  },
+  titleType: {
+    type: String,
+    default: '',
   },
 });
 

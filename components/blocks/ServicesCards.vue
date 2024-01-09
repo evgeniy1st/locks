@@ -1,13 +1,14 @@
 <template>
   <section class="pt-[130px] w-full">
-    <h3
-      class="text-[44px] leading-[50px] px-[148px] text-basic-black mb-[70px]"
-    >
-      {{ data.data.title }}
-    </h3>
+    <GetTitle
+      v-if="data?.data?.title"
+      :title="data.data.title"
+      :type="data.data?.title_type ? data.data.title_type : 'span'"
+      class="text-[44px] leading-[50px] px-[148px] text-basic-black mb-[50px] block"
+    />
     <div
       v-if="data?.data?.description"
-      class="html-from-admin"
+      class="html-from-admin px-[32px]"
       v-html="data.data.description"
     ></div>
     <div class="px-[32px] flex items-stretch flex-wrap gap-[20px] w-full">

@@ -27,9 +27,12 @@
       class="bg-light-yellow grow rounded-[60px] pt-[50px] pb-[60px] px-[60px] text-basic-black"
     >
       <div v-if="!isSuccess" class="flex flex-col gap-[30px]">
-        <h4 class="text-[44px] leading-[50px]">
-          {{ data.data.title }}
-        </h4>
+        <GetTitle
+          v-if="data?.data?.title"
+          :title="data.data.title"
+          :type="data.data?.title_type ? data.data.title_type : 'span'"
+          class="text-[44px] leading-[50px]"
+        />
         <p class="text-[30px] leading-[38px]">
           {{ data.data.description }}
         </p>
@@ -61,9 +64,9 @@
         </div>
       </div>
       <div v-else class="flex flex-col gap-[30px] justify-center">
-        <h4 class="text-[44px] leading-[50px]">
+        <span class="text-[44px] leading-[50px]">
           {{ data.data.success_title }}
-        </h4>
+        </span>
         <p class="text-[30px] leading-[38px]">
           {{ data.data.success_text }}
         </p>

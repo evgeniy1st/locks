@@ -2,7 +2,11 @@
   <section class="w-full mx-auto mt-[130px] px-[32px]">
     <ul class="flex flex-wrap gap-[20px]">
       <li v-for="item in cases.data" :key="item.id">
-        <component :is="component.component" :data="item" />
+        <component
+          :is="component.component"
+          :data="item"
+          :title-type="data.data.cases_title_type"
+        />
       </li>
     </ul>
     <PaginationNav

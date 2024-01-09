@@ -1,11 +1,11 @@
 <template>
   <section v-if="data && 'data' in data" class="pt-[130px] text-basic-black">
-    <h4
-      v-if="'title' in data.data"
-      class="px-[148px] mb-[70px] text-[44px] leading-[50px]"
-    >
-      {{ data.data.title }}
-    </h4>
+    <GetTitle
+      v-if="data?.data?.title"
+      :title="data.data.title"
+      :type="data.data?.title_type ? data.data.title_type : 'span'"
+      class="px-[148px] mb-[70px] text-[44px] leading-[50px] block"
+    />
 
     <p v-if="'description' in data.data" class="mb-[70px]">
       {{ data.data.description }}
@@ -13,7 +13,11 @@
 
     <ul class="px-[32px] flex flex-wrap gap-[20px] items-start w-full">
       <li v-for="item in data.data.cases" :key="item.block_portfolio_id">
-        <component :is="component.component" :data="item.objects_id" />
+        <component
+          :is="component.component"
+          :data="item.objects_id"
+          :title-type="data.data.cases_title_type"
+        />
       </li>
       <li class="flex flex-col w-[329px] h-[222px] justify-center items-center">
         <NestedLink

@@ -1,6 +1,11 @@
 <template>
   <section class="mt-[160px]">
-    <h3 class="text-[30px] leading-[38px] mb-[70px]">{{ data.data.title }}</h3>
+    <GetTitle
+      v-if="data?.data?.title"
+      :title="data.data.title"
+      :type="data.data?.title_type ? data.data.title_type : 'span'"
+      class="text-[30px] leading-[38px] mb-[70px]"
+    />
     <div
       class="px-[148px] flex items-center gap-[21px]"
       :class="

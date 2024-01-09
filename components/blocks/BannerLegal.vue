@@ -3,13 +3,19 @@
     class="pt-[130px] w-full px-[148px] flex items-start gap-[21px] text-basic-black text-[16px] leading-[normal]"
   >
     <div>
-      <h4 class="text-[44px] leading-[50px] pb-[70px]">
-        {{ data.data.title }}
-      </h4>
+      <GetTitle
+        v-if="data?.data?.title"
+        :title="data.data.title"
+        :type="data.data?.title_type ? data.data.title_type : 'span'"
+        class="text-[44px] leading-[50px] pb-[70px]"
+      />
       <div class="flex flex-col gap-[30px]">
-        <h5 class="text-[30px] leading-[38px]">
-          {{ data.data.subtitle }}
-        </h5>
+        <GetTitle
+          v-if="data?.data?.subtitle"
+          :title="data.data.subtitle"
+          :type="data.data?.subtitle_type ? data.data.subtitle_type : 'span'"
+          class="text-[30px] leading-[38px]"
+        />
         <p>
           {{ data.data.start_text }}
         </p>

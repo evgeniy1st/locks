@@ -1,8 +1,11 @@
 <template>
   <section class="pt-[130px] w-full">
-    <h4 class="px-[148px] text-[44px] leading-[50px] mb-[100px]">
-      {{ data.data.title }}
-    </h4>
+    <GetTitle
+      v-if="data?.data?.title"
+      :title="data.data.title"
+      :type="data.data?.title_type ? data.data.title_type : 'span'"
+      class="px-[148px] text-[44px] leading-[50px] mb-[100px] block"
+    />
 
     <ul class="p-[32px] flex mx-auto items-start gap-[20px] justify-center">
       <li

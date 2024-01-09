@@ -1,8 +1,11 @@
 <template>
   <section class="pt-[130px] w-full text-basic-black overflow-x-hidden">
-    <h4 class="text-[44px] leading-[50px] mb-[100px] px-[148px]">
-      {{ data.data.title }}
-    </h4>
+    <GetTitle
+      v-if="data?.data?.title"
+      :title="data.data.title"
+      :type="data.data?.title_type ? data.data.title_type : 'span'"
+      class="text-[44px] leading-[50px] mb-[100px] px-[148px] block"
+    />
     <div
       class="mx-[32px] bg-light-blue rounded-[60px] overflow-y-visible review-block pb-[60px]"
     >

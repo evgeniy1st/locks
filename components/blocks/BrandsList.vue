@@ -1,9 +1,12 @@
 <template>
   <!-- eslint-disable vue/no-v-html -->
   <section class="text-basic-black flex flex-col w-full mx-auto gap-[70px]">
-    <h4 class="text-[44px] leading-[50px] px-[148px]">
-      {{ data.data.title }}
-    </h4>
+    <GetTitle
+      v-if="data?.data?.title"
+      :title="data.data.title"
+      :type="data.data?.title_type ? data.data.title_type : 'span'"
+      class="text-[44px] leading-[50px] px-[148px]"
+    />
     <div class="px-[148px]">
       <p
         class="text-[16px] leading-[normal] max-w-[604px] first-line:leading-[35px]"
@@ -12,9 +15,12 @@
     </div>
 
     <div class="flex flex-col gap-[26px]">
-      <h5 class="text-[30px] leading-[38px] mb-[26px] px-[148px]">
-        {{ data.data.subtitle }}
-      </h5>
+      <GetTitle
+        v-if="data?.data?.subtitle"
+        :title="data.data.subtitle"
+        :type="data.data?.subtitle_type ? data.data.subtitle_type : 'span'"
+        class="text-[30px] leading-[38px] mb-[26px] px-[148px]"
+      />
 
       <div class="px-[32px]">
         <Carousel :items-to-show="6" :wrap-around="true" snap-align="start">
